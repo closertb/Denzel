@@ -8,7 +8,6 @@
          <router-link :to="LoginLink">请先登录</router-link>
       </section>
 		</ul>
-		<!--<ul class="ui-title">{{title}}</ul>-->
 		<ul id="ui-nav">
       <li v-for="(tabbarName,index) of tabbarNames" :class="{active:title== tabbarName.name}" >
           <router-link  :to="tabbarName.tabLink">{{tabbarName.name}}
@@ -53,13 +52,6 @@ export default {
 </script>
 
 <style scoped>
-*{
-  box-sizing: border-box;
-  margin:0;
-  padding:0;
-  top: 0;
-  left:0;
-  }
 .ui-header{
   position: fixed;
   float:left;

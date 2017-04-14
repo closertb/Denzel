@@ -1,21 +1,20 @@
 <template>
 <div>
  <v-header title="Login">
-    <router-link slot="right" to="/">请先登录</router-link>
   </v-header>
   <div class="hello">
     <h1 v-if="!logstate">{{ msg }}</h1>
     <section v-if="!logstate">
-      <form class="login" v-on:submit.prevent="login()">
+      <form class="loginForm" @submit.prevent="login()">
 			<div class="line">	
 				<input type="text" placeholder="输入你的用户名" v-model="form.name">
         <div v-show="btn && !form.name">用户名不能为空</div>
 			</div>
 			<div class="line">
-				<input type="number" placeholder="输入你的密码" v-model="form.id">
+				<input type="text" placeholder="输入你的密码" v-model="form.id">
         <div v-show="btn && !form.id">密码不能为空</div>
 			</div>
-			<button>登录</button>
+			<button>Login the APP</button>
 		</form>
     </section> 
     <section v-if="logstate">
@@ -36,8 +35,8 @@ export default {
       msg: 'Please Login the App First',
       btn:false,
       form: {
-					id: '123456',
-					name: 'Denzel'
+					id: '',
+					name: ''
 				}
     }
   },
@@ -66,21 +65,27 @@ export default {
 </script>
 
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.hello{
+    width:100%;
+    min-height:630px;
+    background: url("../assets/back.jpg");
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+.hello>*{
+  position: relative;
+  top:80px;
 }
-
-li {
-  display: inline-block;
-  margin: 0 10px;
+.loginForm{
+  width:400px;
+  height:200px;
+  background:#C0B6EB;
+  margin:20px auto 0;
+  padding:20px 0;
+  border-radius: 8px;
 }
-
-a {
-  color: #42b983;
+.hello input,button{
+  margin-top:22px;
+  height:29px;
+  border-radius: 5px;
 }
+button{ position:relative;float:right;width:auto;border-radius: 4px;padding:4px;background:#DBA37E;margin-right:30px;}
 </style>
