@@ -5,11 +5,11 @@
          <p>欢迎你：{{userInfo.name}} <button class="loginout" @click="loginout"><img src="../assets/close.png"></button></p>
       </section>
      	<section v-if="!userInfo.name">
-         <router-link :to="LoginLink">请先登录</router-link>
+         <router-link :to="{ path: 'Login' }">请先登录</router-link>
       </section>
 		</ul>
 		<ul id="ui-nav">
-      <li v-for="(tabbarName,index) of tabbarNames" :class="{active:title== tabbarName.name}" >
+      <li v-for="(tabbarName,index) of tabbarNames" :class="{active:title== tabbarName.name}">
           <router-link  :to="tabbarName.tabLink">{{tabbarName.name}}
               </router-link>   
       </li>   
@@ -22,7 +22,6 @@ import {mapState} from 'vuex'
 export default {
       data(){
         return{
-            LoginLink:'/Login',
             tabbarNames:[
                 {name:'Hello',tabLink:'/'},
                 {name:'MyBlog',tabLink:'/MyBlog'},
@@ -45,7 +44,7 @@ export default {
         props: {
             title: {
                 type: String,
-                default: 'morenye'
+                default: 'any'
             }
         }
 }
@@ -118,4 +117,11 @@ export default {
   border:0;
   }
   .loginout img{width:18px;height:18px;}
+/*  .router-link-active{
+    cursor: default;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    color: #fff;
+    background-color: #337ab7;    
+  }*/
 </style>

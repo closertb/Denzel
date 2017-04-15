@@ -45,7 +45,6 @@ export default {
     userInfo:"userstate"  
   }),
   methods:{
-    //  ...mapActions("USER_SIGNIN"),
 			  login:function(){
 				this.btn = true;
         console.log("start:");
@@ -87,5 +86,5 @@ export default {
   height:29px;
   border-radius: 5px;
 }
-button{ position:relative;float:right;width:auto;border-radius: 4px;padding:4px;background:#DBA37E;margin-right:30px;}
+form button{ position:relative;float:right;width:auto;border-radius: 7px;padding:4px;background:#DBA37E;margin-right:30px;}
 </style>

@@ -1,7 +1,6 @@
 <template>
 <div>
  <v-header title="MyBlog">
-    <router-link slot="right" to="/">欢迎你</router-link>
   </v-header>
 
   <div class="hello">
