@@ -4,21 +4,26 @@ Vue.use(Vuex);
 const userstore = new Vuex.Store({  
   state: {  
     userstate:JSON.parse(sessionStorage.getItem('user')) || {},
-    loginState:false||(Boolean(JSON.parse(sessionStorage.getItem('user'))))
-  },    
+    logstate:false||(Boolean(JSON.parse(sessionStorage.getItem('user'))))
+  },  
+  getters:{
+    loginstate:function(state){
+      console.log("fhg:"+(state.userstate.id===undefined));
+        return (state.userstate.id===undefined);
+    }
+  },  
   mutations: {  
     increment:function(state){  
         state.count += 2;  
     },
     userSignin:function(state, user){
-            var userstate=state.userstate;
             sessionStorage.setItem('user', JSON.stringify(user));
-            state.loginState=true;
-            Object.assign(userstate, user);           
+            Object.assign(state.userstate, user);   
+            state.logstate=true;        
     },
     userSignout:function(state) {
             sessionStorage.removeItem('user');
-            state.loginState=false;
+            state.logstate=false;    
             Object.keys(state.userstate).forEach(k => Vue.delete(state.userstate, k))
     } 
   },  
@@ -27,7 +32,6 @@ const userstore = new Vuex.Store({
       return commit('increment');  
     },
     userSignin:function({commit}, user){
-      console.log("new:"+user.name+"***mima:"+user.id);
         var loginFlag=true; //false
              if(loginFlag){
                commit("userSignin", user);  
@@ -37,6 +41,7 @@ const userstore = new Vuex.Store({
   userSignout:function({commit}) {
      commit("userSignout");
   }  
- }  
+ },
+ strict: true  
 }); 
 export default userstore;

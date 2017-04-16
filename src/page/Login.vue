@@ -18,7 +18,7 @@
 		</form>
     </section> 
     <section v-if="logstate">
-      <h2>欢迎你：{{userInfo.name}}</h2>
+      <h2>这个区域后面没有机会被看到</h2>
       <p><button @click="loginout">退出</button></p>
     </section>  
   </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex' 
+import { mapState, mapActions ,mapGetters} from 'vuex' 
 
 export default {
   name: 'Login',
@@ -40,24 +40,25 @@ export default {
 				}
     }
   },
-  computed: mapState({
-    logstate:"loginState",
-    userInfo:"userstate"  
-  }),
+// computed: mapGetters({logstate:"logstate"}), //这个GETTERS是多余的，只是想尝试应用一下getters函数
+  computed:mapState(
+    {userInfo:"userstate",
+    logstate:"logstate"}
+    ),
   methods:{
+        ...mapActions(["userSignin","userSignout"]),
 			  login:function(){
 				this.btn = true;
-        console.log("start:");
-        var user=this.form;
+        var user=this.form
 				if(!this.form.id || !this.form.name) {
           return;
         }else{
-          this.$store.dispatch("userSignin",user);
-          this.$router.replace({ path: '/' })
+          this.userSignin(user);
+          this.$router.replace({ path: '/' });
         }
 			},
       loginout:function(){
-          return this.$store.dispatch("userSignout");
+          this.userSignout();
       }      
     }
  }

@@ -1,6 +1,6 @@
 <template>
 <div>
- <v-header title="Hello">
+ <v-header title="Resume">
 </v-header>
   <div class="hello">
     <img src="../assets/logo.png">
@@ -12,29 +12,21 @@
 
 <script>
 export default {
-  name: 'home',
+  name: 'Resume',
   data () {
     return {
-      msg: 'Welcome to DENZEL App'
+      msg: 'DENZEL Resume'
     }
   },
   methods:{
     test:function(){
-      for (var i = 0; i < 5; i++) { 
-      (function(j){
-        setTimeout(function() { 
-            console.log(new Date, j); 
-        }, 1000); 
-      })(i);
-
-     } 
-      console.log(new Date, i+"end");      
-      }
+      console.log(new Date);      
   }
+}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 .hello {
   width:100%;

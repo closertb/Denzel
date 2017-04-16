@@ -24,9 +24,9 @@ export default {
         return{
             tabbarNames:[
                 {name:'Hello',tabLink:'/'},
+              //  {name:'Log',tabLink:'/Login'},
                 {name:'MyBlog',tabLink:'/MyBlog'},
-                {name:'Login',tabLink:'/Login'},
-                {name:'VUEX',tabLink:'/'}
+                {name:'MyResume',tabLink:'/Resume'}
             ],
         }
     },

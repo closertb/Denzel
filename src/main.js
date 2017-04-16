@@ -14,7 +14,8 @@ Vue.use(VueRouter)
 
 router.beforeEach(({meta, path}, from, next) => {
     var { auth = true } = meta
-    var isLogin = Boolean(store.state.loginState) //true用户已登录， false用户未登录
+    var isLogin = Boolean(store.state.logstate) //true用户已登录， false用户未登录
+    console.log("st:"+isLogin);
     if (auth && !isLogin && path !== '/Login') {
         return router.replace({ path: '/Login' })
     }
