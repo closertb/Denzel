@@ -51,14 +51,15 @@ export default {
 </script>
 
 <style scoped>
+*{color:white;}
 .ui-header{
   position: fixed;
   float:left;
   width:100%;
   min-height:44px;
-  border:  dashed 1px #ddd;
+  border: outset 1px #ddd;
   border-width: 0 0 1px;
-  /*background: #C0F0FE;*/
+  background: #42474B;
   z-index: 1030; 
 }
 .ui-header ul{

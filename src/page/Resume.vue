@@ -1,16 +1,13 @@
 <template>
 <div>
- <v-header title="Resume">
+ <v-header title="MyResume">
 </v-header>
-  <div class="hello">
-    <img src="../assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <button @click="test()">测试</button>
-  </div>
+  <myResume></myResume>
  </div> 
 </template>
 
 <script>
+import myResume from "../components/MyResume"
 export default {
   name: 'Resume',
   data () {
@@ -20,9 +17,12 @@ export default {
   },
   methods:{
     test:function(){
-      console.log(new Date);      
+      console.log(new Date);            
   }
-}
+},
+  components:{
+     "myResume":myResume
+  }
 }
 </script>
 
