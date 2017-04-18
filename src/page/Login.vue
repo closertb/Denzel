@@ -35,8 +35,8 @@ export default {
       msg: 'Please Login the App First',
       btn:false,
       form: {
-					id: '',
-					name: ''
+					id: '123456',
+					name: 'Denzel'
 				}
     }
   },
@@ -69,6 +69,7 @@ export default {
     width:100%;
     min-height:630px;
     background: url("../assets/back.jpg");
+    text-align: center; 
 }
 .hello>*{
   position: relative;

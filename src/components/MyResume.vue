@@ -25,7 +25,31 @@
         </section>
         <section id="skill">
             <h1>掌握技能</h1>
-            <div></div>
+            <div>
+                <ul>
+                    <h3>语言</h3>
+                    <li><span>HTML</span><myProbar barWidth="85%"></myProbar></li>
+                    <li><span>JavaScript</span><myProbar barWidth="85%"></myProbar></li>
+                    <li><span>CSS</span><myProbar barWidth="70%"></myProbar></li>
+                    <li><span>JAVA</span><myProbar barWidth="80%"></myProbar></li>
+                    <li><span>SQL</span><myProbar barWidth="70%"></myProbar></li>
+                    <li><span>C</span><myProbar barWidth="75%"></myProbar></li>                                                        
+                 </ul>
+                <ul>
+                    <h3>框架</h3>
+                    <li><span>jQuery</span><myProbar barWidth="90%"></myProbar></li>
+                    <li><span>SSH2框架</span><myProbar barWidth="85%"></myProbar></li>
+                    <li><span>Vue.js</span><myProbar barWidth="60%"></myProbar></li> 
+                    <li><span>BootStrap</span><myProbar barWidth="45%"></myProbar></li>  
+                 </ul>
+                <ul>
+                    <h3>开发工具及其他</h3>
+                    <li><span>Myclipse</span><myProbar barWidth="85%"></myProbar></li>
+                    <li><span>VS Code</span><myProbar barWidth="80%"></myProbar></li>
+                    <li><span>MySql</span><myProbar barWidth="80%"></myProbar></li> 
+                    <li><span>Oracle</span><myProbar barWidth="65%"></myProbar></li>      
+                </ul>                 
+            </div>
         </section>
          <section id="exp">
             <h1>工作经历</h1>
@@ -37,26 +61,38 @@
         </section>   
       </div>  
 </template>
-
+<script>
+import Probar from "./processBar"
+export default{
+    name: 'processBar',
+    components:{
+        "myProbar":Probar
+    }
+}
+</script>
 <style scoped>
     *{
         color:white;
         font-family:"Microsoft YaHei";
         font-size: 18px;
     }
-        a{text-decoration:none; color:white;} 
-        section{width:100%;height:100%;}
-        .content{width:1140px;margin:0 auto;}    
+            a{text-decoration:none; color:white;} 
+            section{width:100%;height:100%;}
+            section>div{width:1140px;margin:0 auto;}    
             h1{text-align:center;font-size: 46px;}   
+            ul{display: inline-block;margin-top:80px;}
+            li{list-style-type:none;line-height:28px;}
+            h3{text-align:center;font-size: 23px;}
             #intro{background:#1889C5;padding:60px 0 100px;} 
             .info{width:100%;} 
-            .info ul{display: inline-block;margin-top:100px;}
-             .simple{width:30%;margin-left:70px;}
-             .simple li{margin:10px 0;list-style-type:none;line-height:28px;}
-         li span{text-align:right;width:100px;display: inline-block;}
-          .detail{clear:both;width:50%;margin-left:50px;vertical-align: top;}
-         .detail p{padding-top:10px;margin-bottom:30px;line-height:32px;}
-         #skill{background:#129DE7;padding:60px 0 100px;} 
-        #exp{background:#26B1B6;padding:60px 0 100px;}  
-        #proj{background:#9C58B6;padding:60px 0 100px;}   
+            .simple{width:30%;margin-left:70px;}
+            .simple li{margin:10px 0;}
+            li span{text-align:right;width:100px;display: inline-block;}
+            .detail{clear:both;width:50%;margin-left:50px;vertical-align: top;}
+            .detail p{padding-top:10px;margin-bottom:30px;line-height:32px;}
+            #skill{background:#129DE7;padding:60px 0 100px;} 
+            #skill ul{width:30%;height:240px;margin-left:30px;background: plum;vertical-align: top;}
+            #skill h3{margin: 10px 0;}
+            #exp{background:#26B1B6;padding:60px 0 100px;}  
+            #proj{background:#9C58B6;padding:60px 0 100px;}   
 </style>

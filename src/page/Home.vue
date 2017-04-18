@@ -5,7 +5,6 @@
   <div class="hello">
     <img src="../assets/logo.png">
     <h1>{{ msg }}</h1>
-    <button @click="test()">测试</button>
   </div>
  </div> 
 </template>
@@ -36,13 +35,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .hello {
   width:100%;
   min-height:550px;
   background: url("../assets/bak.jpg");
+  text-align: center; 
 }
 .hello *{
   position: relative;
   top:80px;
+  margin:0 auto;
 }
 </style>
