@@ -28,26 +28,15 @@
             <div>
                 <ul>
                     <h3>语言</h3>
-                    <li><span>HTML</span><myProbar barWidth="85%"></myProbar></li>
-                    <li><span>JavaScript</span><myProbar barWidth="85%"></myProbar></li>
-                    <li><span>CSS</span><myProbar barWidth="70%"></myProbar></li>
-                    <li><span>JAVA</span><myProbar barWidth="80%"></myProbar></li>
-                    <li><span>SQL</span><myProbar barWidth="70%"></myProbar></li>
-                    <li><span>C</span><myProbar barWidth="75%"></myProbar></li>                                                        
+                    <li v-for="tag of langTags"><span>{{tag.name}}</span><myProbar :barWidth="tag.value"></myProbar></li>                                                     
                  </ul>
                 <ul>
                     <h3>框架</h3>
-                    <li><span>jQuery</span><myProbar barWidth="90%"></myProbar></li>
-                    <li><span>SSH2框架</span><myProbar barWidth="85%"></myProbar></li>
-                    <li><span>Vue.js</span><myProbar barWidth="60%"></myProbar></li> 
-                    <li><span>BootStrap</span><myProbar barWidth="45%"></myProbar></li>  
+                    <li v-for="tag of frameTags"><span>{{tag.name}}</span><myProbar :barWidth="tag.value"></myProbar></li>
                  </ul>
                 <ul>
                     <h3>开发工具及其他</h3>
-                    <li><span>Myclipse</span><myProbar barWidth="85%"></myProbar></li>
-                    <li><span>VS Code</span><myProbar barWidth="80%"></myProbar></li>
-                    <li><span>MySql</span><myProbar barWidth="80%"></myProbar></li> 
-                    <li><span>Oracle</span><myProbar barWidth="65%"></myProbar></li>      
+                    <li v-for="tag of othersTags"><span>{{tag.name}}</span><myProbar :barWidth="tag.value"></myProbar></li>
                 </ul>                 
             </div>
         </section>
@@ -64,7 +53,31 @@
 <script>
 import Probar from "./processBar"
 export default{
-    name: 'processBar',
+    data(){
+        return {
+            langTags:[
+                {name:"HTML",value:"85%"},
+                {name:"JavaScript",value:"85%"},
+                {name:"CSS",value:"70%"}, 
+                {name:"JAVA",value:"80%"}, 
+                {name:"SQL",value:"70%"},
+                {name:"C",value:"75%"}                
+                ],
+            frameTags:[
+                {name:"jQuery",value:"90%"},
+                {name:"SSH2",value:"75%"},
+                {name:"Vue.js",value:"60%"}, 
+                {name:"BootStrap",value:"60%"},              
+                ], 
+            othersTags:[
+                {name:"Myclipse",value:"85%"},
+                {name:"VS Code",value:"80%"},
+                {name:"MySql",value:"80%"}, 
+                {name:"Oracle",value:"65%"},
+                {name:"Git",value:"60%"},              
+                ],                                
+        }
+    },
     components:{
         "myProbar":Probar
     }
