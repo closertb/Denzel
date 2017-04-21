@@ -109,7 +109,9 @@
 
          <section id="exp">
             <h1>工作经历</h1>
-            <div></div>
+            <div>
+                <canvas id="myPlot" width="600px" height="300px"></canvas>
+            </div>
         </section>
       </div>  
 </template>
@@ -121,7 +123,7 @@ export default{
             langTags:[
                 {name:"HTML",value:"85%"},
                 {name:"JavaScript",value:"85%"},
-                {name:"CSS",value:"70%"}, 
+                {name:"CSS",value:"75%"}, 
                 {name:"JAVA",value:"80%"}, 
                 {name:"SQL",value:"70%"},
                 {name:"C",value:"75%"}                
