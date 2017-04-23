@@ -21,7 +21,7 @@ h3{text-align:center;font-size: 23px;}
   min-height:46px;
   border: outset 1px #ddd;
   border-width: 0 0 1px;
-  background: #42474B;
+  background: #4f4f4f;
   margin:0 auto;
   z-index: 1030; 
 }
@@ -77,19 +77,24 @@ h3{text-align:center;font-size: 23px;}
 .content{width:100%;position:relative; top:46px;}
 section{width:100%;min-height:800px;display: inline-block;}
 section>div{position:relative;width:80%;margin:0 auto;}   
-#intro{background:#26B1B6;padding:60px 0 100px;} 
+#intro{background:#018A9C;padding:60px 0 100px;} 
+#proj{background:#037CB3;padding:60px 0 100px;}
+#skill{background:#176EB5;position: relative;padding:60px 0 100px;} 
+#exp{position:relative; background:#5E81C6;padding:60px 0 100px;} 
+
+
 .info{width:100%;} 
 .simple{width:30%;margin-left:70px;vertical-align:top;}
 .simple li{margin:10px 0;}
 li span{text-align:right;margin-left:10px;min-width:90px;display: inline-block;}
 .detail{clear:both;width:50%;margin-left:50px;vertical-align:top;}
 .detail p{padding-top:10px;margin-bottom:10px;line-height:32px;}
-#skill{background:#129DE7;position: relative;padding:60px 0 100px;} 
+
 #skill ul{width:30%;min-height:270px;margin-left:10px;border:1px dashed white ;border-radius:8px; vertical-align: top;}
 #skill ul:first{margin-left:30px;}
 #skill h3{margin: 20px 0;}
 #skill li>div{max-width:60%;}
-#proj{background:#1889C5;padding:60px 0 100px;}
+
 .space{height:40px;width:100%;}
 .skitem {
     box-sizing: border-box;
@@ -148,7 +153,7 @@ li span{text-align:right;margin-left:10px;min-width:90px;display: inline-block;}
     list-style-type: disc;
     line-height: 1.5em;
     margin-bottom: 0.5em;}
-#exp{position:relative; background:#1889C5;padding:60px 0 100px;} 
+
 #myPlot{
     margin-top:80px;
     margin-left:40px;
