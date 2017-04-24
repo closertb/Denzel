@@ -8,17 +8,17 @@
                     <li> <span>姓名</span>| **--Denzel</li>
                     <li> <span>手机</span>| 18628921***</li>
                     <li> <span>邮箱</span>| closertb@163.com</li>
+                    <li> <span>毕业院校</span>| 哈尔滨工业大学</li>                    
                     <li> <span>学历</span>| 本科</li>
                     <li> <span>所在地</span>| 成都</li>
-                    <li><span>Github</span><a href="https://github.com/closertb">| 点击访问</a></li>
-                    <li><span>技术博客</span><a href="https://segmentfault.com/u/denzel">| 点击访问</a></li>
+                    <li> <span>求职意向</span>| 成都</li>
+                    <li><span>Github</span><a href="https://github.com/closertb" target="_blank">| 点击访问</a></li>
                 </ul>
                 <ul class="detail">
-                    <p>我是一个性格幽默、做事认真的人；喜欢接触各种机器语言，对编程有百分之一百二的热情；
-                         无论是工作还是生活，都有自己的计划，有很强的时间概念，能在约定时间内保质保量的完成任务。</p>
-                    <p>两年WEB开发经验，掌握基本的JAVA WEB后端开发技能，熟练掌握HTML,JavaScript,CSS前端基础语言，熟悉jQuery框架，能熟练应用jQuery开发
-                        前后端分离、具有向下兼容且可靠性教高的WEB应用，具备jQuery插件开发能力。
+                    <p>我是一个性格开朗、做事执着、有韧劲的人。</p>
+                    <p>两年WEB开发经验，熟练掌握HTML/JavaScript/CSS；熟悉jQuery框架及其生态，具备jQuery插件和基础级后端开发能力。
                     </p>
+                    <p>专注于前后端分离与前端模块化、工程化，热衷于前端新技术实践和交互体验优化，对编程有自己的一份热爱</p>                    
                 </ul>
             </div>
             </div>
@@ -30,8 +30,22 @@
                 <div class="skborder">
                     <div class="skdot"></div>
                 </div>
+                <h3>基于VUE框架的个人博客</h3>
+                <div class="skdate">2017.04-至今</div>
+                <div class="sum"><b>关键词：</b>Vue,webPack,git</div>
+                <ul class="skdetail">
+                    <li>依靠vue框架搭建个人博客，实践了node.js，webPack，git等技术</li>
+                    <li>应用vuex，vueRouter等vue生态实现路由和状态管理</li>  
+                    <li>一切皆模块的思想，降低了开发难度，缩短了开发周期</li>  
+                    <li>正不断实践中。。。。</li>                                                                           
+                </ul>
+            </div>              
+            <div class="skitem">
+                <div class="skborder">
+                    <div class="skdot"></div>
+                </div>
                 <h3>试验状态控制分析系统</h3>
-                <div class="skdate">2017.02-至今</div>
+                <div class="skdate">2016.06-至今</div>
                 <div class="sum"><b>关键词：</b>jQuery插件,zTree,jPlot,SSH2，多线程</div>
                 <ul class="skdetail">
                     <li>使用jQuery插件中的AutoSuggest,zTree,Tab等插件,丰富了页面表现形式，提升了用户交互</li>
