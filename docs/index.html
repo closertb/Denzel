@@ -19,7 +19,11 @@
             $("#ui-nav li").bind("click",function(){
                 $("#ui-nav li[class='active']").removeClass("active");
                 $(this).addClass("active");
-            })     
+            })   
+            $("#intro img").bind("click",function(){
+                console.log("download");
+                window.location.href="MyResume.pdf";
+            });  
         });
 
     </script>
@@ -31,15 +35,15 @@
 		</ul>
 		<ul id="ui-nav">
          <li><a href="#intro">个人简介</a></li>   
-         <li><a href="#proj">项目经验</a></li>
-         <li><a href="#skill">掌握技能</a></li>             
-         <li><a href="#exp">个人经历</a></li>         
+         <li><a href="#proj">项目经验</a></li>           
+         <li><a href="#exp">个人经历</a></li>  
+         <li><a href="#skill">所获荣誉</a></li>                  
 		</ul>      
 	</header> 
     <div class="content">      
         <section id="intro">
             <div>
-            <h1>个人简介</h1>
+            <h1>个人简介<img src="download.jpg" width="35px" height="25px" title="简历下载" alt="简历下载"></h1>
             <div class="info">
                 <ul class="simple">
                     <li> <span>姓名</span>| **--Denzel</li>
@@ -47,12 +51,12 @@
                     <li> <span>邮箱</span>| closertb@163.com</li>
                     <li> <span>学历</span>| 本科</li>                    
                     <li> <span>毕业院校</span>| 哈尔滨工业大学</li>                    
-                    <li> <span>求职意向</span>| 成都</li>
+                    <li> <span>求职意向</span>| 前端工程师</li>
                     <li><span>Github</span><a href="https://github.com/closertb" target="_blank">| 点击访问</a></li>
                 </ul>
                 <ul class="detail">
                     <p>我是一个性格开朗、做事执着、有韧劲的人。</p>
-                    <p>两年WEB开发经验，熟练掌握HTML/JavaScript/CSS；熟悉jQuery框架及其生态，具备jQuery插件和基础级后端开发能力。
+                    <p>两年WEB开发经验，熟练掌握HTML、CSS JavaScript、、jQuery等技术，熟悉Vue框架模块化开发模式，具备后端开发能力。
                     </p>
                     <p>专注于前端模块化、工程化，热衷于前端新技术实践和交互体验优化，对编程有自己的一份热爱</p>
                 </ul>
@@ -67,10 +71,10 @@
                 </div>
                 <h3>基于VUE框架的个人博客</h3>
                 <div class="skdate">2017.04-至今</div>
-                <div class="sum"><b>关键词：</b>Vue,webPack,git</div>
+                <div class="sum"><b>关键词：</b>Vue,webPack,git,SPA</div>
                 <ul class="skdetail">
                     <li>基于vue框架搭建个人博客，实践熟悉webPack构建工具、git代码管理等技术</li>
-                    <li>应用vuex，vueRouter等vue生态实现应用的路由和状态管理</li>  
+                    <li>应用vuex，vueRouter等vue生态实现个人首个SPA应用</li>  
                     <li>深刻体会到一切皆模块的构建思想，网站架构也变得清晰</li>  
                     <li>正不断实践中。。。。</li>                                                                           
                 </ul>
@@ -80,14 +84,14 @@
                     <div class="skdot"></div>
                 </div>
                 <h3>试验状态控制分析系统</h3>
-                <div class="skdate">2016.06-至今</div>
+                <div class="skdate">2016.06-2017.04</div>
                 <div class="sum"><b>关键词：</b>jQuery插件,jPlot,SSH2，多线程</div>
                 <ul class="skdetail">
-                    <li>使用jQuery插件中的Suggest,zTree,Tab等插件,丰富了页面表现形式，提升了用户交互体验</li>
+                    <li>使用jQuery生态的suggest,zTree,jPlot等插件,丰富了页面表现形式，提升了用户交互体验</li>
+                    <li>JS代码实现采用模块化，提高了代码质量与代码块之间的独立性</li>  
                     <li>配置Listener,启用后台独立线程实现数据运算和中间库数据的定时更新</li>
                     <li>采用jPlot绘制饼图，曲线图，直观反应当前数据状态</li>    
-                    <li>在JS编程上，引入模块化，提高了函数编写规范</li>     
-                    <li>深入应用Jsrender,引入组件化，提高代码的复用</li>                                                        
+                    <li>依赖于Ajax与localStorage，实现系统完全前后端分离</li>                                                        
                 </ul>
             </div>
               <div class="skitem">
@@ -98,10 +102,10 @@
                 <div class="skdate">2016.11-2017.01</div>
                 <div class="sum"><b>关键词：</b>JsRender模板,非侵扰式设计,前后端分离</div>
                 <ul class="skdetail">
-                    <li>前端页面采用非侵扰式设计，实现样式，控制和内容分离，采用$.ready()和Ajax实现部分页面前后端分离</li>
+                    <li>前端页面采用非侵扰式设计，实现样式，控制和内容分离，依赖预加载和Ajax技术实现部分页面前后端分离</li>
+                   <li>在浏览器端完成试卷检查、提交、结果计算与答题结果复现，降低了服务器端线程的压力</li>                     
                     <li>采用Jsrender实现试题模板化，脱离了对JSTL语言的依赖</li>
-                    <li>在浏览器端完成试卷检查、提交、结果计算与答题结果复现，降低了服务器端线程的压力</li> 
-                    <li>本次重构,将原有的30个页面压缩到5个,采用非侵扰式设计，提高了代码的复用性和可读性</li>                                        
+                    <li>本次重构,将原有的30个页面压缩到5个，提高了用户交互体验</li>                                        
                 </ul>
             </div>           
              <div class="skitem">
@@ -133,37 +137,7 @@
                     <li>后台解析试题，对试题重新打包发送到前端，实现答题结果复现</li>                   
                 </ul>
             </div>                                 
-        </section>   
-        <section id="skill">
-            <h1>自我评价及获奖</h1>
-            <div>
-              维护中。。。。。
-<!--                <ul id="lang">
-                    <h3>语言</h3>
-                    <li><span>HTML</span><div value="85%"></div></li>
-                    <li><span>JavaScript</span><div value="85%"></div></li>
-                    <li><span>CSS</span><div value="75%"></div></li>
-                    <li><span>JAVA</span><div value="80%"></div></li>
-                    <li><span>SQL</span><div value="70%"></div></li>
-                    <li><span>C</span><div value="75%"></div></li>                                                        
-                 </ul>
-                <ul id="frame">
-                    <h3>框架</h3>
-                    <li><span>jQuery</span><div value="90%"></div></li>
-                    <li><span>SSH2框架</span><div value="80%"></div></li>
-                    <li><span>Vue.js</span><div value="60%"></div></li> 
-                    <li><span>BootStrap</span><div value="55%"></div></li>                                       
-                 </ul>
-                <ul id="others">
-                    <h3>开发工具及其他</h3>
-                     <li><span>Myclipse</span><div value="85%"></div></li>
-                    <li><span>VS Code</span><div value="80%"></div></li>
-                    <li><span>MySql</span><div value="80%"></div></li> 
-                    <li><span>Oracle</span><div value="65%"></div></li>
-                    <li><span>Git</span><div value="60%"></div></li>                   
-                </ul> -->                
-            </div>
-        </section>             
+        </section>              
          <section id="exp">
             <h1>教育及工作经历</h1>
             <div class="needspace">
@@ -192,6 +166,41 @@
                 </div>            
             </div>
         </div> 
-        </section>                          
+        </section>  
+         <section id="skill">
+            <h1>所获荣誉及成果</h1>
+            <div>
+                <p>2015.02   <span>《划焊样板设计》获中航工业成飞“优秀罗阳突击队”</span></p>
+                <p>2015.04    <span>中航工业技术创新方法研修班优秀学员</span></p>
+                <p>2015.07   <span> 获公司技术创新成果“创效激励”三等奖</span></p>
+                <p>2015.11   <span>《面向飞机健康管理的试验流程设计》被《测控技术》收录</span></p>
+                <p>2016.03    <span>公司小改小革，合理化建议优秀奖</span></p>
+                <p>2017.02    <span>公司信息化最佳实践项目优秀个人</span></p>
+<!--                <ul id="lang">
+                    <h3>语言</h3>
+                    <li><span>HTML</span><div value="85%"></div></li>
+                    <li><span>JavaScript</span><div value="85%"></div></li>
+                    <li><span>CSS</span><div value="75%"></div></li>
+                    <li><span>JAVA</span><div value="80%"></div></li>
+                    <li><span>SQL</span><div value="70%"></div></li>
+                    <li><span>C</span><div value="75%"></div></li>                                                        
+                 </ul>
+                <ul id="frame">
+                    <h3>框架</h3>
+                    <li><span>jQuery</span><div value="90%"></div></li>
+                    <li><span>SSH2框架</span><div value="80%"></div></li>
+                    <li><span>Vue.js</span><div value="60%"></div></li> 
+                    <li><span>BootStrap</span><div value="55%"></div></li>                                       
+                 </ul>
+                <ul id="others">
+                    <h3>开发工具及其他</h3>
+                     <li><span>Myclipse</span><div value="85%"></div></li>
+                    <li><span>VS Code</span><div value="80%"></div></li>
+                    <li><span>MySql</span><div value="80%"></div></li> 
+                    <li><span>Oracle</span><div value="65%"></div></li>
+                    <li><span>Git</span><div value="60%"></div></li>                   
+                </ul> -->                
+            </div>
+        </section>                                 
     </body>
 </html>

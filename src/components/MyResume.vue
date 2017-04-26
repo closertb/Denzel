@@ -16,7 +16,7 @@
                 </ul>
                 <ul class="detail">
                     <p>我是一个性格开朗、做事执着、有韧劲的人。</p>
-                    <p>两年WEB开发经验，熟练掌握HTML/JavaScript/CSS；熟悉jQuery框架及其生态，具备jQuery插件和基础级后端开发能力。
+                    <p>两年WEB开发经验，熟练掌握HTML、CSS JavaScript、、jQuery等技术，熟悉Vue框架在PWA开发中的应用，具备后端开发能力。
                     </p>
                     <p>专注于前后端分离与前端模块化、工程化，热衷于前端新技术实践和交互体验优化，对编程有自己的一份热爱</p>                    
                 </ul>
@@ -45,7 +45,7 @@
                     <div class="skdot"></div>
                 </div>
                 <h3>试验状态控制分析系统</h3>
-                <div class="skdate">2016.06-至今</div>
+                <div class="skdate">2016.06-2017.04</div>
                 <div class="sum"><b>关键词：</b>jQuery插件,zTree,jPlot,SSH2，多线程</div>
                 <ul class="skdetail">
                     <li>使用jQuery插件中的AutoSuggest,zTree,Tab等插件,丰富了页面表现形式，提升了用户交互</li>
@@ -69,7 +69,7 @@
                     <li>采用Ajax实现答题计时，和到达时间的试卷自动提交</li> 
                     <li>采用JS在浏览器端对试卷检查、提交、结果计算、并对答题结果复现，降低了服务器端线程的压力</li> 
                     <li>采用Oracle数据库，学习利用sequence和trigger实现ID自增</li>
-                    <li>本次重构,将原有的30个页面压缩到5个,采用非侵扰式设计，提高了代码的复用和可读性，提高了开发效率</li>                                        
+                    <li>本次重构,将原有的30个页面压缩到5个，提高了开发效率</li>                                        
                 </ul>
             </div>           
              <div class="skitem">

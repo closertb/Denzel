@@ -82,7 +82,7 @@ section>div{position:relative;width:80%;margin:0 auto;}
 #skill{background:#176EB5;position: relative;padding:60px 0 100px;} 
 #exp{position:relative; background:#5E81C6;padding:60px 0 100px;} 
 
-
+#intro img {margin-left:6px;vertical-align:bottom;}
 .info{width:100%;} 
 .simple{width:30%;margin-left:70px;vertical-align:top;}
 .simple li{margin:10px 0;}
@@ -94,7 +94,9 @@ li span{text-align:right;margin-left:10px;min-width:90px;display: inline-block;}
 #skill ul:first{margin-left:30px;}
 #skill h3{margin: 20px 0;}
 #skill li>div{max-width:60%;}
-
+#skill>div{margin-top:80px;padding-left: 30px;}
+#skill p{padding-top:15px;}
+#skill span{padding-left:30px;}
 .space{height:40px;width:100%;}
 .skitem {
     box-sizing: border-box;
