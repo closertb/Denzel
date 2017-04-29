@@ -8,6 +8,8 @@ import Resume from '@/page/Resume'
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',
+  base:'/StockAnalyse/',
   routes: [
     {path: '/',name: 'Home', component: Home},
     {path: '/MyBlog',name: 'MyBlog', component: MyBlog},

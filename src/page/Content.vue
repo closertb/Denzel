@@ -4,14 +4,15 @@
   </v-header>
 
   <div class="hello">
-    <blogSide class="side" :userTrans="userInfo" :dataTrans="sidemsg"></blogSide>
-    <blogContent class="content" :dataTrans="contentmsg" title="detail"></blogContent>
+    <blogSide class="side" v-on:btnClick="showChild" :userTrans="userInfo" :dataTrans="sidemsg"></blogSide>
+    <blogContent class="content" v-on:childClick="showChild" :dataTrans="contentmsg" :title="typemsg"></blogContent>
   </div>
  </div> 
 </template>
 
 <script>
 import { mapState} from 'vuex' 
+import bus from "../components/eventBus"
 import blogSide from '../components/blogSide'
 import blogContent from '../components/blogContent'
 export default {
@@ -19,18 +20,32 @@ export default {
   data () {
     return {
       contentmsg: 'it is the content show place',
+      typemsg:'item',
       sidemsg: {
+        type:0,
         file:18,
         folder:21,
         bookmark:2
       }
     }
   },
+  created(){
+    bus.$emit("showDetail",function(){
+      console.log("got bus");
+      typemsg="detail";
+    });
+  },
   components:{
     blogSide,
     blogContent
   },
-  computed:mapState({userInfo:"userstate"})
+  computed:mapState({userInfo:"userstate"}),
+  methods:{
+      showChild:function(msg){
+        console.log("child:"+msg);
+        this.typemsg=msg;
+      }
+ }
   }
 </script>
 

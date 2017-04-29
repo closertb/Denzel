@@ -5,6 +5,7 @@
                  <img src="../assets/mine.jpg">
              </div>
              <div class="username"><h3>{{userTrans.name}}</h3></div>
+             <div class="total"><h3>生命不息，战斗不止</h3></div>             
          </div>
        <div class="underLine"></div>
        <div class="item">
@@ -14,17 +15,21 @@
           <li> {{dataTrans.bookmark}}</li>          
        </ul>
        <ul>
-           <li><img src="../assets/tag/file.png" alt="文章"></li>
-           <li><img src="../assets/tag/folder.png" alt="分类"></li>
-           <li><img src="../assets/tag/bookmark.png" alt="标签"></li>          
+           <li><img src="../assets/tag/file.png" alt="文章" title="list" @click="btnClick('item')"></li>
+           <li><img src="../assets/tag/folder.png" alt="分类" title="item" @click="btnClick('item')"></li>
+           <li><img src="../assets/tag/bookmark.png" alt="标签" title="mark" @click="btnClick('detail')"></li>          
        </ul>
        </div>
-       <div class="total"><h3>生命不息，战斗不止</h3></div>
      </div>
 </template>
 <script>
 export default{
-    props: ['userTrans','dataTrans']
+    props: ['userTrans','dataTrans'],
+    methods:{      
+        btnClick:function(msg){
+            this.$emit('btnClick',msg);
+        }
+    }
 }
 </script>
 <style scoped>
@@ -45,7 +50,7 @@ export default{
     border-radius: 50%;    
 }
 .username{
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .underLine{
     margin: 10px 0;
@@ -63,7 +68,7 @@ export default{
     width:25px;
 }
 .total{
-    padding: 20px;
+    padding: 10px;
 }
 
 </style>
