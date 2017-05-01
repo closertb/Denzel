@@ -86,6 +86,9 @@ bus.$emit(eventName，msg)
   computed:可以绑定多个参数作为监听输入,只要其中一个改变，就会启动重新计算结果值
 
 
+5.01
+vue-resouce
+
 
 
 

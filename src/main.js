@@ -6,10 +6,12 @@ import router from './router'
 import modelheader from './components/header'
 import store from './store/userstore'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 
 Vue.config.productionTip = false
 Vue.component("v-header",modelheader);
 
+Vue.use(VueResource)
 Vue.use(VueRouter)
 
 router.beforeEach(({meta, path}, from, next) => {

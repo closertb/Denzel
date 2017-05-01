@@ -32,15 +32,45 @@ const userstore = new Vuex.Store({
       return commit('increment');  
     },
     userSignin:function({commit}, user){
-        var loginFlag=true; //false
-             if(loginFlag){
+/*        var loginFlag=false; //false
+            $.ajax({
+                type:"post",
+                url:"http://localhost:80/StockAnalyse/LoginServlet",
+                data:"flag=ajaxlogin&loginName="+user.name+"&loginPwd="+user.id,
+                async:false, //这里没有用promise，须设置为同步，
+                dataType:"json",
+                success:function(data){
+                  loginFlag=true;
+                },
+                erro:function(){
+                  console.log("something wrong");
+                }
+             });    
+              if(loginFlag){
                commit("userSignin", user);  
-             }    
+             }    */               
+         Vue.http({
+          method:"post",
+          url:"http://localhost:80/StockAnalyse/LoginServlet",
+          data:{"flag":"ajaxlogin","loginName":user.name,"loginPwd":user.id}, 
+          //data:
+          headers: {"X-Requested-With": "XMLHttpRequest"},  
+          credientials:false, 
+          emulateHTTP: true     
+        }).then(function(response){
+          console.log("it's done"+response.string());
+          commit("userSignin", user);           
+        },function(response){
+          console.log("game over");
+        });
+        
+       console.log("not async");
+ 
          
   },    
   userSignout:function({commit}) {
      commit("userSignout");
-  }  
+  }
  },
  strict: true  
 }); 
