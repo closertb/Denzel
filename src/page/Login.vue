@@ -46,20 +46,36 @@ export default {
     logstate:"logstate"}
     ),
   methods:{
-        ...mapActions(["userSignin","userSignout"]),
+        ...mapActions(["userSignin","userSignout","increment"]),
 			  login:function(){
 				this.btn = true;
         var user=this.form
 				if(!this.form.id || !this.form.name) {
           return;
         }else{
-          this.userSignin(user);
-          this.$router.replace({ path: '/' });
+            let that = this
+/*            var call =function(res){
+                console.log("not sync"+res);
+            }; */
+            console.log(user);
+            this.userSignin(function(res){
+              console.log(res+":sb");
+              if(res===true){
+                that.$router.replace({ path: '/' });
+              }
+        });
         }
 			},
       loginout:function(){
           this.userSignout();
-      }      
+      } ,
+      test:function(){
+        let callstr ="cback";
+        this.increment(function(res){
+          console.log("sb"+res);
+        });
+
+      }    
     }
  }
 </script>

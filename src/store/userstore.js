@@ -28,45 +28,35 @@ const userstore = new Vuex.Store({
     } 
   },  
   actions:{  
-    increment:function({ dispatch, commit }) {  
-      return commit('increment');  
+    increment:function({commit},callback) {  
+      callback("call back test");  
+     console.log("huan jue");
     },
-    userSignin:function({commit}, user){
-/*        var loginFlag=false; //false
-            $.ajax({
-                type:"post",
-                url:"http://localhost:80/StockAnalyse/LoginServlet",
-                data:"flag=ajaxlogin&loginName="+user.name+"&loginPwd="+user.id,
-                async:false, //这里没有用promise，须设置为同步，
-                dataType:"json",
-                success:function(data){
-                  loginFlag=true;
-                },
-                erro:function(){
-                  console.log("something wrong");
-                }
-             });    
-              if(loginFlag){
-               commit("userSignin", user);  
-             }    */               
-         Vue.http({
+    userSignin:function({commit}, callback ){ 
+      var user={ //为什么只能能传递两个参数
+        name:"Dom",
+        id:"123456"
+      }
+      console.log("start"+teststr); 
+      callback("user callback");          
+          Vue.http({
           method:"post",
-          url:"http://localhost:80/StockAnalyse/LoginServlet",
-          data:{"flag":"ajaxlogin","loginName":user.name,"loginPwd":user.id}, 
-          //data:
-          headers: {"X-Requested-With": "XMLHttpRequest"},  
+          url:"http://localhost:80/StockAnalyse/LoginServlet",       
+          params:{"flag":"ajaxlogin","loginName":user.name,"loginPwd":user.id}, 
+          headers: {"X-Requested-With": "XMLHttpRequest"},
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
           credientials:false, 
-          emulateHTTP: true     
+          emulateJSON: true     
         }).then(function(response){
-          console.log("it's done"+response.string());
-          commit("userSignin", user);           
+       //   console.log(response.data);
+          commit("userSignin", user); 
+          callback(true);
+        //  return true;
         },function(response){
           console.log("game over");
-        });
-        
-       console.log("not async");
- 
-         
+        //  return false;
+        }); 
+
   },    
   userSignout:function({commit}) {
      commit("userSignout");

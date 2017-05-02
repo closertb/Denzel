@@ -87,7 +87,39 @@ bus.$emit(eventName，msg)
 
 
 5.01
-vue-resouce
+vue-resouce:与$.ajax()相似度很高，options配置作为输入，支持Promise
+ $.ajax()：      var loginFlag=false; //false
+            $.ajax({
+                type:"post",
+                url:"http://localhost:80/StockAnalyse/LoginServlet",
+                data:"flag=ajaxlogin&loginName="+user.name+"&loginPwd="+user.id,
+                async:false, //这里没有用promise，须设置为同步，
+                dataType:"json",
+                success:function(data){
+                  loginFlag=true;
+                },
+                erro:function(){
+                  console.log("something wrong");
+                }
+             });    
+              if(loginFlag){
+               commit("userSignin", user);  
+             }    
+ ########这是分界线#############
+         Vue.http({
+          method:"post",
+          url:"http://localhost:80/StockAnalyse/LoginServlet",       
+          params:{"flag":"ajaxlogin","loginName":user.name,"loginPwd":user.id}, 
+          headers: {"X-Requested-With": "XMLHttpRequest"},
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}, //这个很重要
+          credientials:false, 
+          emulateJSON: true     
+        }).then(function(response){
+          console.log(response.data);
+          commit("userSignin", user); 
+        },function(response){
+          console.log("game over");
+        });               
 
 
 
