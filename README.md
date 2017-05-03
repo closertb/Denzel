@@ -119,7 +119,16 @@ vue-resouce:与$.ajax()相似度很高，options配置作为输入，支持Promi
           commit("userSignin", user); 
         },function(response){
           console.log("game over");
-        });               
+        });     
+
+##5.03
+关于VUEW ACTION 传参的问题 this.$store.dispatch(type: string, payload?: any, options?: Object)  
+中文：https://vuex.vuejs.org/zh-cn/actions.html
+英文：https://vuex.vuejs.org/en/api.html#vuexstore-instance-methods
+大概理解：dispatch默认只接受两个参数，第一个是要分发代理的action名称，第二个为要传递的参数
+所以当写下userSignin:function({commit},recieve,callback)这个函数时，使用mapActions调用
+this.userSignin(user,function(){})时，总是报Callback没有定义,原因就在于此；
+解决方法：把user和callback写在一个对象中，然后传参调用。
 
 
 

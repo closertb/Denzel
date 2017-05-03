@@ -16,6 +16,7 @@
 			</div>
 			<button>Login the APP</button>
 		</form>
+    			<button @click="test">test</button>
     </section> 
     <section v-if="logstate">
       <h2>这个区域后面没有机会被看到</h2>
@@ -36,7 +37,7 @@ export default {
       btn:false,
       form: {
 					id: '123456',
-					name: 'Denzel'
+					name: 'Dom'
 				}
     }
   },
@@ -54,26 +55,29 @@ export default {
           return;
         }else{
             let that = this
-/*            var call =function(res){
-                console.log("not sync"+res);
-            }; */
-            console.log(user);
-            this.userSignin(function(res){
-              console.log(res+":sb");
+            let transObj={
+              userInfo:user,
+              callback:function(res){
               if(res===true){
                 that.$router.replace({ path: '/' });
               }
-        });
+            }
+          }
+            this.userSignin(transObj);
         }
 			},
       loginout:function(){
           this.userSignout();
       } ,
       test:function(){
+        let objFun={
+          count:10,
+          callback:function(res){
+          console.log("sb:"+res);
+        }
+      }
         let callstr ="cback";
-        this.increment(function(res){
-          console.log("sb"+res);
-        });
+        this.increment(objFun);
 
       }    
     }

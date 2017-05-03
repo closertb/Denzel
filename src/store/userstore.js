@@ -28,17 +28,17 @@ const userstore = new Vuex.Store({
     } 
   },  
   actions:{  
-    increment:function({commit},callback) {  
-      callback("call back test");  
+    increment:function({},obj) { 
+      console.log("length:"+arguments.length); 
+      console.log(obj); 
+      obj.callback("call back test");  
      console.log("huan jue");
     },
-    userSignin:function({commit}, callback ){ 
-      var user={ //为什么只能能传递两个参数
-        name:"Dom",
-        id:"123456"
-      }
-      console.log("start"+teststr); 
-      callback("user callback");          
+    userSignin:function({commit},recieve){  //为什么只能能传递两个参数
+
+      let user=recieve.userInfo;
+      console.log("start"); 
+      recieve.callback("user callback");          
           Vue.http({
           method:"post",
           url:"http://localhost:80/StockAnalyse/LoginServlet",       
@@ -48,13 +48,10 @@ const userstore = new Vuex.Store({
           credientials:false, 
           emulateJSON: true     
         }).then(function(response){
-       //   console.log(response.data);
           commit("userSignin", user); 
-          callback(true);
-        //  return true;
+          recieve.callback(true);
         },function(response){
           console.log("game over");
-        //  return false;
         }); 
 
   },    
