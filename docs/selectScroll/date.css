@@ -1,0 +1,32 @@
+*{ padding:0;margin:0; }
+html{font-size: 62.5%;}
+ul,li{ list-style: none;list-style-type:none;}
+.page {display: none;position: absolute;width: 100%;height: 100%;overflow: hidden;}
+
+#ui-scroll div{float: left;margin-left: 10%;margin-top: 15px;padding-right: 22px;}
+#ui-scroll_ui-time div{float: left;margin-left: 10%;padding-right: 22px;}
+#grandwrapper{position: absolute;left: 0;top:45px;bottom: 60px;width:80%;}
+#parentwrapper{position: absolute;left: 26%;top:45px;bottom: 60px;width:80%;}
+#childwrapper{position: absolute;left: 50%;top:45px;bottom: 60px;width:80%;}
+
+
+#grandwrapper ul li{color: #898989;font-size: 1.6rem;}
+#parentwrapper ul li{color: #898989;font-size:1.6rem;}
+#childwrapper ul li{color: #898989;font-size:1.6rem;}
+#markgrand{position:relative; margin-left: 76px;top:-2px;}
+#markparent{position:relative; margin-left: 40px;top:-2px;}
+#markchild{position:relative; margin-left: 42px;top:-2px;}
+
+#ui-header{width: 100%;height: 50px;background: #79C12F;text-align: center;color: #fff;line-height: 50px;font-size:2rem;}
+#setcancle ul{text-align: center;line-height: 30px; margin:1px auto;font-size: 2.5rem;}
+#setcancle ul li{border-radius:3px;float: left;width: 40%;height: 30px;list-style-type: none;font-family:'microsoft yahei';font-size:2rem;}
+#ui-confirm{position: absolute;background:#79C12F;left:20px;color:#fff;}
+#ui-cancle{position: absolute;background:  #dcdddd;right:20px;width: 40%;color:#666;}
+#ui-shadow{display: none;position: absolute;width: 100%;height: 100%;top:0;left:0;background: #000; filter:alpha(Opacity=50);-moz-opacity:0.5;opacity: 0.5;}
+#ui-Page{font-size: 2.2rem; border-radius: 3px; position:absolute;bottom:0;MARGIN-RIGHT: auto;vertical-align:middle;
+MARGIN-LEFT: auto;width:100%;;height: 240px;background: #FFFFFF;z-index:9999999;}
+#ui-title{width: 100%;height:50px;background: #79C12F;text-align: center;color: #fff;line-height: 50px;font-size: 2rem;font-family:'microsoft yahei';}
+#ui-mark{font-size:2rem;left:5%;width: 90%;height: 20px;position:absolute;top:108px;background:#eee;border:1px solid #eee;}
+#ui-scroll{background: #F8F8F8;width:94%; margin:10px 3%;border: 1px solid #E0E0E0;border-radius: 4px;height: 120px;text-align: center;line-height: 40px;}
+#grandwrapper ul,#parentwrapper ul,#childwrapper ul{width:40%;}
+#ui-Footer{width:100%;background: #fff;height: 50px;bottom: 0px;position: absolute;}

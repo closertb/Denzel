@@ -130,6 +130,32 @@ vue-resouce:与$.ajax()相似度很高，options配置作为输入，支持Promi
 this.userSignin(user,function(){})时，总是报Callback没有定义,原因就在于此；
 解决方法：把user和callback写在一个对象中，然后传参调用。
 
+##5.05-5.06
+SelectSroll 插件：源码地址：https://github.com/closertb/Denzel/tree/master/docs/selectScroll
+依赖：本插件使用依赖jQuery.js和iScroll.js
+作用: 可以用于三级实物的联动选择（比如：日期，时间，地理位置，班级属性）
+#功能配置：theme
+选择不同功能时，配置相应的theme:(日期(date)，时间(time)，其他（others）)
+#插件打开时默认的选择项配置{initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区"}
+可通过配置比如initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" 
+如果未配置，日期时间自动定位到当时的日期时间，而其他的在没配置且从未输入时，会定位到数据源第一项
+#数据源配置：source
+日期时间功能时，插件提供数据源，当为其他项时，要为其配置数据源source
+#标题设置：title
+可为你要使用的功能配置标题，以便第一眼知道插件的功能
+eg：title:"请选择日期"
+
+#完整调用示例
+	$.getJSON("city.js",function(data){
+		$('#beginlocation').selectScroll({theme:"city",attatchObject:"#footer",title:"请选择城市",
+		initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ,source:data});		
+	});
+	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期"});	
+
+	$('#beginTime').selectScroll({theme:"time",attatchObject:"#footer",title:"请选择时间"});
+	$('#beginClass').selectScroll({theme:"others",attatchObject:"#footer",title:"请选择人员",
+#具体使用可查看源码地址
+
 
 
 

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width = device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<title>三级联动选择插件</title>
+<link href="date.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.demo{width:100%;margin-top:40px;margin-left:10%;font-size:18px; }
+.demo .lie{margin:0 0 20px 0;}
+.textInput {height:20px;}
+</style>
+<script type="text/javascript" src="jquery-1.8.3.js" ></script>
+<script type="text/javascript" src="selectScroll.js" ></script>
+<script type="text/javascript" src="iscroll.js" ></script>
+<script type="text/javascript">
+var classSource =[
+{ "name": "一年级", "parent":[{"name":"一班", "child":["张11","张22","张33","张44"]},{"name":"二班", "child":["李11","李22","李33","李44"]},{"name":"三班", "child":["狗11","狗22"]}]},
+{ "name": "二年级", "parent":[{"name":"一班", "child":["唐11","唐22"]},{"name":"九班", "child":["王11","王22","王33","王44"]}]},
+{ "name": "三年级", "parent":[{"name":"五班", "child":["任11","任22","任33"]},{"name":"六班", "child":["郑11","郑22","郑33"]},{"name":"八班", "child":["孔11","孔22","孔33"]}]}]
+$(function(){
+	$.getJSON("city.js",function(data){
+		$('#beginlocation').selectScroll({theme:"city",attatchObject:"#footer",title:"请选择城市",
+		initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ,source:data});		
+	});
+	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期"});	
+
+	$('#beginTime').selectScroll({theme:"time",attatchObject:"#footer",title:"请选择时间"});
+	$('#beginClass').selectScroll({theme:"others",attatchObject:"#footer",title:"请选择人员",
+	initGrand:"二年级" ,initParent:"一班" ,initChild:"唐22" ,source:classSource});	
+});
+</script>
+</head>
+<body>   
+
+
+<div class="demo">
+	<div class="lie">日期设置-1:<input  id="beginDate" class="textInput" onfocus="this.blur();"/></div>
+</div>
+
+<div class="demo">
+	<div class="lie">时间设置-1:<input  id="beginTime" class="textInput" onfocus="this.blur();"/></div>
+</div>
+
+<div class="demo">
+	<div class="lie">地址设置-1:<input  id="beginlocation" class="textInput" onfocus="this.blur();"/></div>
+</div>
+
+<div class="demo">
+	<div class="lie">人员设置-1:<input  id="beginClass" class="textInput" onfocus="this.blur();"/></div>
+</div>
+<div class="demo">
+	<p><a href="https://github.com/closertb/Denzel/tree/master/docs/selectScroll">GitHub源码地址</a></p>
+	<p><a href="https://github.com/closertb/Denzel/tree/master/">GitHub Readme使用说明</a></p>	
+</div>
+<div id="footer">
+</div>
+</body>
+</html>
