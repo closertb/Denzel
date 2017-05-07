@@ -1,41 +1,75 @@
 ##5.05-5.06
-SelectSroll 插件：源码地址：https://github.com/closertb/Denzel/tree/master/docs/selectScroll ＜/br＞
-依赖：本插件使用依赖jQuery.js和iScroll.js＜/br＞
-作用: 可以用于三级实物的联动选择（比如：日期，时间，地理位置，班级属性）＜/br＞
-#功能配置：theme＜/br＞
-选择不同功能时，配置相应的theme:(日期(date)，时间(time)，其他（others）)＜/br＞
-#插件打开时默认的选择项配置{initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区"}＜/br＞
-可通过配置比如initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ＜/br＞
-如果未配置，日期时间自动定位到当时的日期时间，而其他的在没配置且从未输入时，会定位到数据源第一项 ＜/br＞
-#数据源配置：source＜/br＞
-日期时间功能时，插件提供数据源，当为其他项时，要为其配置数据源source＜/br＞
-#标题设置：title＜/br＞
-可为你要使用的功能配置标题，以便第一眼知道插件的功能＜/br＞
-eg：title:"请选择日期"＜/br＞
-#显示行数设置：rows＜/br＞
-可为你的选择框配置显示的行数，只支持大于0的非偶数行，默认显示3行＜/br＞
-eg：title:"请选择日期"＜/br＞
+SelectSroll 插件：源码地址：https://github.com/closertb/Denzel/tree/master/docs/selectScroll   
 
-#完整调用示例＜/br＞
-	$.getJSON("city.js",function(data){  //不要用本地方式打开，否则为跨域获取数据。＜/br＞
-		$('#beginlocation').selectScroll({theme:"city",attatchObject:"#footer",title:"请选择城市",＜/br＞
-		initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ,source:data});		＜/br＞
-	});＜/br＞
-	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期",rows:2});	//设置2，显示为3＜/br＞
+依赖：本插件使用依赖jQuery.js和iScroll.js  
 
-	$('#beginTime').selectScroll({theme:"time",attatchObject:"#footer",title:"请选择时间"});＜/br＞
-	$('#beginClass').selectScroll({theme:"others",attatchObject:"#footer",title:"请选择人员",＜/br＞
-	initGrand:"二年级" ,initParent:"一班" ,initChild:"唐22" ,source:classSource,rows:5});	＜/br＞
-#具体使用可查看源码地址＜/br＞
 
-##5.03＜/br＞
-关于VUEW ACTION 传参的问题 this.$store.dispatch(type: string, payload?: any, options?: Object)  ＜/br＞
-中文：https://vuex.vuejs.org/zh-cn/actions.html＜/br＞
-英文：https://vuex.vuejs.org/en/api.html#vuexstore-instance-methods＜/br＞
+作用: 可以用于三级实物的联动选择（比如：日期，时间，地理位置，班级属性）  
+
+#功能配置：theme  
+
+选择不同功能时，配置相应的theme:(日期(date)，时间(time)，其他（others）)  
+
+#插件打开时默认的选择项配置{initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区"}  
+
+可通过配置比如initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区"   
+
+如果未配置，日期时间自动定位到当时的日期时间，而其他的在没配置且从未输入时，会定位到数据源第一项   
+
+#数据源配置：source  
+
+日期时间功能时，插件提供数据源，当为其他项时，要为其配置数据源source  
+
+#标题设置：title  
+
+可为你要使用的功能配置标题，以便第一眼知道插件的功能  
+
+eg：title:"请选择日期"  
+
+#显示行数设置：rows  
+
+可为你的选择框配置显示的行数，只支持大于0的非偶数行，默认显示3行  
+
+eg：title:"请选择日期"  
+
+
+#完整调用示例  
+
+	$.getJSON("city.js",function(data){  //不要用本地方式打开，否则为跨域获取数据。  
+
+		$('#beginlocation').selectScroll({theme:"city",attatchObject:"#footer",title:"请选择城市",  
+
+		initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ,source:data});		  
+
+	});  
+
+	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期",rows:2});	//设置2，显示为3  
+
+
+	$('#beginTime').selectScroll({theme:"time",attatchObject:"#footer",title:"请选择时间"});  
+
+	$('#beginClass').selectScroll({theme:"others",attatchObject:"#footer",title:"请选择人员",  
+
+	initGrand:"二年级" ,initParent:"一班" ,initChild:"唐22" ,source:classSource,rows:5});	  
+
+#具体使用可查看源码地址  
+
+
+##5.03  
+
+关于VUEW ACTION 传参的问题 this.$store.dispatch(type: string, payload?: any, options?: Object)  
+
+中文：https://vuex.vuejs.org/zh-cn/actions.html  
+
+英文：https://vuex.vuejs.org/en/api.html#vuexstore-instance-methods  
+
 大概理解：dispatch默认只接受两个参数，第一个是要分发代理的action名称，第二个为要传递的参数 
+
 所以当写下userSignin:function({commit},recieve,callback)这个函数时，使用mapActions调用 
-this.userSignin(user,function(){})时，总是报Callback没有定义,原因就在于此； ＜/br＞
-解决方法：把user和callback写在一个对象中，然后传参调用。＜/br＞
+this.userSignin(user,function(){})时，总是报Callback没有定义,原因就在于此；  
+
+解决方法：把user和callback写在一个对象中，然后传参调用。 
+
 
 5.01
 vue-resouce:与$.ajax()相似度很高，options配置作为输入，支持Promise
