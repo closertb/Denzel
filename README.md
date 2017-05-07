@@ -1,13 +1,14 @@
-##5.05-5.06
-SelectSroll 插件：源码地址：https://github.com/closertb/Denzel/tree/master/docs/selectScroll   
+##5.05-5.06  
 
+SelectSroll 插件：源码地址：https://github.com/closertb/Denzel/tree/master/docs/selectScroll  
+
+viewPort学习：http://www.cnblogs.com/2050/p/3877280.html  
+iSroll学习：http://blog.csdn.net/sweetsuzyhyf/article/details/44195549/  
+ 
 依赖：本插件使用依赖jQuery.js和iScroll.js  
-
-
 作用: 可以用于三级实物的联动选择（比如：日期，时间，地理位置，班级属性）  
 
 #功能配置：theme  
-
 选择不同功能时，配置相应的theme:(日期(date)，时间(time)，其他（others）)  
 
 #插件打开时默认的选择项配置{initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区"}  
@@ -36,7 +37,7 @@ eg：title:"请选择日期"
 
 可为你的选择框配置显示的行数，只支持大于0的非偶数行，默认显示3行  
 
-eg：title:"请选择日期"  
+eg：rows:5  
 
 
 #完整调用示例  
