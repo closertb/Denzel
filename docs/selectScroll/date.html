@@ -25,11 +25,11 @@ $(function(){
 		$('#beginlocation').selectScroll({theme:"city",attatchObject:"#footer",title:"请选择城市",
 		initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ,source:data});		
 	});
-	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期"});	
+	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期",rows:2});	
 
 	$('#beginTime').selectScroll({theme:"time",attatchObject:"#footer",title:"请选择时间"});
 	$('#beginClass').selectScroll({theme:"others",attatchObject:"#footer",title:"请选择人员",
-	initGrand:"二年级" ,initParent:"一班" ,initChild:"唐22" ,source:classSource});	
+	initGrand:"二年级" ,initParent:"一班" ,initChild:"唐22" ,source:classSource,rows:5});	
 });
 </script>
 </head>

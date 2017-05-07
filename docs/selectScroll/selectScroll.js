@@ -1,24 +1,37 @@
 ﻿(function ($) {   
-	   function createParent(options,selector){
-	        var i =0,str="<li>&nbsp;</li>";
+	   function createParent(options,selector,rows){
+	        var i =0,str="";
+            for(i=0;i<(rows-1)/2;i++){
+                str+="<li>&nbsp;</li>";
+            }
 	        $(selector).text("");
 	        for(i=0;i<options.length;i++){
 	            str+='<li>'+options[i].name+'</li>';
 	        }
-            str+="<li>&nbsp;</li>";
+            for(i=0;i<(rows-1)/2;i++){
+                str+="<li>&nbsp;</li>";
+            }
 	        $(selector).append(str);
 	    }
-	    function createChild(options,selector){
-	        var i =0,str="<li>&nbsp;</li>";
+	    function createChild(options,selector,rows){
+	        var i =0,str="";
+            for(i=0;i<(rows-1)/2;i++){
+                str+="<li>&nbsp;</li>";
+            }
 	        $(selector).text("");
 	        for(i=0;i<options.length;i++){
 	            str+='<li>'+options[i]+'</li>';
 	        }
-            str+="<li>&nbsp;</li>";
+            for(i=0;i<(rows-1)/2;i++){
+                str+="<li>&nbsp;</li>";
+            }
 	        $(selector).append(str);       
 	    }
-	    function createTime(numBegin,numEnd,defaultNum,selector,unit){
-	        var i =0,index=0,str="<li>&nbsp;</li>";
+	    function createTime(numBegin,numEnd,defaultNum,selector,unit,rows){
+	        var i =0,str="";
+            for(i=0;i<(rows-1)/2;i++){
+                str+="<li>&nbsp;</li>";
+            }
 	        $(selector).text("");
 	        for(i=numBegin;i<=numEnd;i++){
 
@@ -31,7 +44,9 @@
 	              str+='<li>'+i+unit+'</li>';
                 }
 	        }
-            str+="<li>&nbsp;</li>";
+            for(i=0;i<(rows-1)/2;i++){
+                str+="<li>&nbsp;</li>";
+            }
 	        $(selector).append(str);
             return index;       
 	    }                    
@@ -50,7 +65,7 @@
                     return i;
                 }
         } }                 
-    var commom={
+    var common={
         CreateUI:function (title,selector){
             var str = ''+
                 '<div id="ui-shadow"></div>'+
@@ -81,6 +96,11 @@
                 '</div>';
             $(selector).html(str);
         },
+        styleSuit:function(rows){
+            $("#ui-Page").css("height",120+rows*40);
+            $("#ui-scroll").css("height",rows*40);   
+             $("#ui-mark").css("top",46+rows*20);                    
+        },
         initCommon:function(option){
             var data = option.source;
             var axis = {
@@ -98,9 +118,9 @@
                 }                
             }
 
-            createParent(data,"#grandwrapper ul");
-            createParent(data[axis.grand].parent,"#parentwrapper ul");
-            createChild(data[axis.grand].parent[axis.parent].child,"#childwrapper ul"); 
+            createParent(data,"#grandwrapper ul",option.rows);
+            createParent(data[axis.grand].parent,"#parentwrapper ul",option.rows);
+            createChild(data[axis.grand].parent[axis.parent].child,"#childwrapper ul",option.rows); 
             return axis;     
         },
         searchIndex:function(value,data){
@@ -111,22 +131,22 @@
                 }
             }
         },       
-        create_Scroll:function(bar,initBar) { 
+        create_Scroll:function(bar,initBar,rows) { 
             initBar.grand+=1;            
             bar.grand = new iScroll("grandwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function () {
-                      bar.indexgrand= (this.y/40)*(-1)+1;//+1+initBar.grand
+                      bar.indexgrand= (this.y/40)*(-1)+(rows-1)/2;//+1+initBar.grand
                   }});
            bar.grand.scrollToElement(document.querySelector("#grandwrapper li:nth-child("+initBar.grand+")"),null,null,true) ;                  
            bar.parent = new iScroll("parentwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function (){
-                      bar.indexparent= (this.y/40)*(-1)+1;//+initBar.parent
+                      bar.indexparent= (this.y/40)*(-1)+(rows-1)/2;//+initBar.parent
                   }});             
            initBar.parent += 1;
            bar.parent.scrollToElement(document.querySelector("#parentwrapper li:nth-child("+initBar.parent+")"),null,null,true) ;                  
            bar.child= new iScroll("childwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function () {
-                      bar.indexchild = (this.y/40)*(-1)+1;//+initBar.child
+                      bar.indexchild = (this.y/40)*(-1)+(rows-1)/2;//+initBar.child
                   }});
           initBar.child+=1;           
           bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child("+initBar.child+")"),null,null,true) ;                  
@@ -155,9 +175,9 @@
                 parent:0,
                 child:0
             };         
-            axis.grand=createTime(option.beginyear,option.endyear,option.initGrand,"#grandwrapper ul","");
-            axis.parent=createTime(1,12,option.initParent,"#parentwrapper ul","");
-            axis.child=createTime(1,option.maxDay,option.initChild,"#childwrapper ul","");  
+            axis.grand=createTime(option.beginyear,option.endyear,option.initGrand,"#grandwrapper ul","",option.rows);
+            axis.parent=createTime(1,12,option.initParent,"#parentwrapper ul","",option.rows);
+            axis.child=createTime(1,option.maxDay,option.initChild,"#childwrapper ul","",option.rows);  
             return axis;                         
         },
          initTimeUi:function(option){ 
@@ -166,9 +186,9 @@
                 parent:0,
                 child:0
             };         
-            axis.grand=createTime(0,23,option.initGrand,"#grandwrapper ul","时");
-            axis.parent=createTime(0,59,option.initParent,"#parentwrapper ul","分");
-            axis.child=createTime(0,59,option.initChild,"#childwrapper ul","秒");  
+            axis.grand=createTime(0,23,option.initGrand,"#grandwrapper ul","时",option.rows);
+            axis.parent=createTime(0,59,option.initParent,"#parentwrapper ul","分",option.rows);
+            axis.child=createTime(0,59,option.initChild,"#childwrapper ul","秒",option.rows);  
             return axis;                         
         }         
 
@@ -194,7 +214,8 @@
             initGrand:"" ,   
             initParent:"" ,  
             initChild:"" ,                                      
-            attatchObject:"",           
+            attatchObject:"", 
+            rows:3,          
             show:false,
             source:[],
             maxDay:31,
@@ -206,7 +227,10 @@
         var temp={};
          var nowdate = new Date();       
          var that = $(this);            
-        var opts = $.extend( true, {}, $.fn.selectScroll.defaultOptions, options );                      
+        var opts = $.extend( true, {}, $.fn.selectScroll.defaultOptions, options );   
+        if((opts.rows<=0)||(opts.rows%2===0)){
+            opts.rows=3;
+        }                   
         if(that.val()!==""){  //initial the default choose
             var arr=[];
             if(opts.theme==="time"){
@@ -220,7 +244,8 @@
         } 
      
         if(opts.theme==="date"){
-            commom.CreateUI(opts.title,opts.attatchObject);               
+            common.CreateUI(opts.title,opts.attatchObject);  
+            common.styleSuit(opts.rows);             
             if(that.val()===""){
                 opts.initGrand=parseInt(nowdate.getYear())+1900;
                 opts.initParent=parseInt(nowdate.getMonth()+"")+1;
@@ -232,21 +257,22 @@
             temp=timeFun.initDateUi(opts);
             $("#ui-shadow").show();
             $("#ui-Page").show();  
-            commom.create_Scroll(Scroll_Bar,temp);
+            common.create_Scroll(Scroll_Bar,temp,opts.rows);
             timer=window.setInterval(function(){
                 var maxDay=0;
                 var newG = $("#grandwrapper ul li:eq("+Scroll_Bar.indexgrand+")").html();
                 var newP = $("#parentwrapper ul li:eq("+Scroll_Bar.indexparent+")").html(); 
                 if(newG!==oldGrand||newP !==oldParent){
                         maxDay = timeFun.checkdays(newG,newP);
-                        createTime(1,maxDay,2,"#childwrapper ul","");
+                        createTime(1,maxDay,2,"#childwrapper ul","",opts.rows);
                         Scroll_Bar.child.refresh();
                         oldGrand=newG;
                         oldParent =newP;                   
                 }
             },300);          
-        }else if(opts.theme==="time"){
-            commom.CreateUI(opts.title,opts.attatchObject);   
+        }else if(opts.theme==="time"){        
+            common.CreateUI(opts.title,opts.attatchObject);  
+            common.styleSuit(opts.rows);                 
             if(that.val()===""){
                 opts.initGrand=parseInt(nowdate.getHours());
                 opts.initParent=parseInt(nowdate.getMinutes());
@@ -257,34 +283,39 @@
             temp=timeFun.initTimeUi(opts); 
             $("#ui-shadow").show();
             $("#ui-Page").show();  
-            commom.create_Scroll(Scroll_Bar,temp);                                                
+            common.create_Scroll(Scroll_Bar,temp,opts.rows);                                               
         }else{ /* others */
-        commom.CreateUI(opts.title,opts.attatchObject);                
+         if(opts.source==""){
+            alert("当为非日期时间联动选择时，必须为其配置数据源");
+            return false;
+         }
+        common.CreateUI(opts.title,opts.attatchObject);   
+         common.styleSuit(opts.rows);                       
          oldGrand=opts.initGrand;
          oldParent=opts.initParent;
-         temp = commom.initCommon(opts);                      
+         temp = common.initCommon(opts);                      
           $("#ui-shadow").show();
           $("#ui-Page").show();  
-          commom.create_Scroll(Scroll_Bar,temp);    
+          common.create_Scroll(Scroll_Bar,temp,opts.rows);    
           timer=window.setInterval(function(){
              var gindex=0,pindex=0;
              var newG = $("#grandwrapper ul li:eq("+Scroll_Bar.indexgrand+")").html();
              var newP = $("#parentwrapper ul li:eq("+Scroll_Bar.indexparent+")").html(); 
              if((oldGrand!==newG) ||(oldParent!==newP)){
-                gindex = commom.searchIndex(newG,opts.source);
+                gindex = common.searchIndex(newG,opts.source);
                 if(oldGrand!==newG){  //grand change, it will change the parent and child;
-                    createParent(opts.source[gindex].parent,"#parentwrapper ul");
-                    createChild(opts.source[gindex].parent[0].child,"#childwrapper ul"); 
+                    createParent(opts.source[gindex].parent,"#parentwrapper ul",opts.rows);
+                    createChild(opts.source[gindex].parent[0].child,"#childwrapper ul",opts.rows); 
                     Scroll_Bar.parent.refresh();
                     Scroll_Bar.child.refresh();                                         
                     Scroll_Bar.parent.scrollToElement(document.querySelector("#parentwrapper li:nth-child(1)"),null,null,true) ; 
            
-                        Scroll_Bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child(1)"),null,null,true) ;                                            
+                    Scroll_Bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child(1)"),null,null,true) ;                                            
                     oldGrand =newG;
                     oldParent = opts.source[gindex].parent[0];                  
                 }else{  //parent change, only change the child;
-                    pindex = commom.searchIndex(newP,opts.source[gindex].parent);
-                    createChild(opts.source[gindex].parent[pindex].child,"#childwrapper ul"); 
+                    pindex = common.searchIndex(newP,opts.source[gindex].parent);
+                    createChild(opts.source[gindex].parent[pindex].child,"#childwrapper ul",opts.rows); 
                      Scroll_Bar.child.refresh();        
                      Scroll_Bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child(1)"),null,null,true) ;  
                                                         
