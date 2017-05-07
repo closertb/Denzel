@@ -19,6 +19,12 @@ SelectSroll 插件：源码地址：https://github.com/closertb/Denzel/tree/mast
 #数据源配置：source  
 
 日期时间功能时，插件提供数据源，当为其他项时，要为其配置数据源source  
+格式参考（JSON属性需一致）：var classSource =[
+{ "name": "一年级", "parent":[{"name":"一班", "child":["张11","张22","张33","张44"]},{"name":"二班", "child":["李11","李22","李33","李44"]},{"name":"三班", "child":["狗11","狗22"]}]},
+{ "name": "二年级", "parent":[{"name":"一班", "child":["唐11","唐22"]},{"name":"九班", "child":["王11","王22","王33","王44"]}]},
+{ "name": "三年级", "parent":[{"name":"五班", "child":["任11","任22","任33"]},{"name":"六班", "child":["郑11","郑22","郑33"]},{"name":"八班", "child":["孔11","孔22","孔33"]}]}]  
+
+
 
 #标题设置：title  
 
