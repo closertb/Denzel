@@ -131,29 +131,44 @@
                 }
             }
         },       
+/*        create_Scroll:function(bar,initBar,rows) { 
+            initBar.grand+=1;            
+            bar.grand = new IScroll("#grandwrapper",{  mouseWheel: true, click: true });
+           bar.grand.scrollToElement(document.querySelector("#grandwrapper li:nth-child("+initBar.grand+")"),null,null,true) ;                  
+           bar.parent = new IScroll("#parentwrapper",{snap:"li",vScrollbar:false
+            });             
+           initBar.parent += 1;
+           bar.parent.scrollToElement(document.querySelector("#parentwrapper li:nth-child("+initBar.parent+")"),null,null,true) ;                  
+           bar.child= new IScroll("#childwrapper",{snap:"li",vScrollbar:false
+                  });
+          initBar.child+=1;           
+          bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child("+initBar.child+")"),null,null,true) ;                  
+        },*/
         create_Scroll:function(bar,initBar,rows) { 
             initBar.grand+=1;            
             bar.grand = new iScroll("grandwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function () {
                       console.log(this);
+                       bar.grand.refresh();
                       bar.indexgrand= (this.y/40)*(-1)+(rows-1)/2;//+1+initBar.grand
                   }});
-           bar.grand.scrollToElement(document.querySelector("#grandwrapper li:nth-child("+initBar.grand+")"),null,null,true) ;                  
+            //      $("#grandwrapper ul").add
+       //    bar.grand.scrollToElement(document.querySelector("#grandwrapper li:nth-child("+initBar.grand+")"),null,null,true) ;                  
            bar.parent = new iScroll("parentwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function (){
                       console.log("y axis:"+this.y);
                       bar.indexparent= (this.y/40)*(-1)+(rows-1)/2;//+initBar.parent
                   }});             
            initBar.parent += 1;
-           bar.parent.scrollToElement(document.querySelector("#parentwrapper li:nth-child("+initBar.parent+")"),null,null,true) ;                  
+       //    bar.parent.scrollToElement(document.querySelector("#parentwrapper li:nth-child("+initBar.parent+")"),null,null,true) ;                  
            bar.child= new iScroll("childwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function () {
                       console.log("z axis:"+this.y);
                       bar.indexchild = (this.y/40)*(-1)+(rows-1)/2;//+initBar.child
                   }});
-          initBar.child+=1;           
-          bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child("+initBar.child+")"),null,null,true) ;                  
-        },
+          initBar.child+=1;       
+      //    bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child("+initBar.child+")"),null,null,true) ;                  
+        },       
         refreshScroll:function(bar){
             bar.grand.refresh();
             bar.parent.refresh();
@@ -260,8 +275,8 @@
             temp=timeFun.initDateUi(opts);
             $("#ui-shadow").show();
             $("#ui-Page").show();  
-     //       common.create_Scroll(Scroll_Bar,temp,opts.rows);
-/*            timer=window.setInterval(function(){
+            common.create_Scroll(Scroll_Bar,temp,opts.rows);
+            timer=window.setInterval(function(){
                 var maxDay=0;
                 var newG = $("#grandwrapper ul li:eq("+Scroll_Bar.indexgrand+")").html();
                 var newP = $("#parentwrapper ul li:eq("+Scroll_Bar.indexparent+")").html(); 
@@ -272,7 +287,7 @@
                         oldGrand=newG;
                         oldParent =newP;                   
                 }
-            },300);  */        
+            },300);          
         }else if(opts.theme==="time"){        
             common.CreateUI(opts.title,opts.attatchObject);  
             common.styleSuit(opts.rows);                 
@@ -286,7 +301,7 @@
             temp=timeFun.initTimeUi(opts); 
             $("#ui-shadow").show();
             $("#ui-Page").show();  
-          //  common.create_Scroll(Scroll_Bar,temp,opts.rows);                                               
+            common.create_Scroll(Scroll_Bar,temp,opts.rows);                                               
         }else{ /* others */
          if(opts.source==""){
             alert("当为非日期时间联动选择时，必须为其配置数据源");
