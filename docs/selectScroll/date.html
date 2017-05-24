@@ -15,16 +15,17 @@
 <script type="text/javascript" src="jquery-1.8.3.js" ></script>
 <script type="text/javascript" src="selectScroll.js" ></script>
 <script type="text/javascript" src="iscroll.js" ></script>
+<!--<script type="text/javascript" src="iscroll.5.20.js" ></script>-->
 <script type="text/javascript">
 var classSource =[
 { "name": "一年级", "parent":[{"name":"一班", "child":["张11","张22","张33","张44"]},{"name":"二班", "child":["李11","李22","李33","李44"]},{"name":"三班", "child":["狗11","狗22"]}]},
 { "name": "二年级", "parent":[{"name":"一班", "child":["唐11","唐22"]},{"name":"九班", "child":["王11","王22","王33","王44"]}]},
 { "name": "三年级", "parent":[{"name":"五班", "child":["任11","任22","任33"]},{"name":"六班", "child":["郑11","郑22","郑33"]},{"name":"八班", "child":["孔11","孔22","孔33"]}]}]
 $(function(){
-/*	$.getJSON("city.js",function(data){
+	$.getJSON("city.js",function(data){
 		$('#beginlocation').selectScroll({theme:"city",attatchObject:"#footer",title:"请选择城市",
 		initGrand:"四川" ,initParent:"成都" ,initChild:"金牛区" ,source:data});		
-	});*/
+	});
 	$('#beginDate').selectScroll({theme:"date",attatchObject:"#footer",title:"请选择日期",rows:2});	
 
 	$('#beginTime').selectScroll({theme:"time",attatchObject:"#footer",title:"请选择时间"});
