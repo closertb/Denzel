@@ -97,7 +97,7 @@
         styleSuit:function(rows){
             $("#ui-Page").css("height",120+rows*40);
             $("#ui-scroll").css("height",rows*40);   
-             $("#ui-mark").css("top",(rows-1)*20);                    
+             $("#ui-mark").css("top",50+rows*20);                    
         },
         initCommon:function(option){
             var data = option.source;
@@ -317,7 +317,7 @@
                 }else{  //parent change, only change the child;
                     pindex = common.searchIndex(newP,opts.source[gindex].parent);
                     createChild(opts.source[gindex].parent[pindex].child,"#childwrapper ul",opts.rows); 
-                    Scroll_Bar.child.refresh();        
+                     Scroll_Bar.child.refresh();        
                      Scroll_Bar.child.scrollToElement(document.querySelector("#childwrapper li:nth-child(1)"),null,null,true) ;  
                                                         
                     oldParent =newP;
