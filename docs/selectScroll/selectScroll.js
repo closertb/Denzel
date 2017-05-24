@@ -133,8 +133,6 @@
             initBar.grand+=1;            
             bar.grand = new iScroll("grandwrapper",{snap:"li",vScrollbar:false,
                   onScrollEnd:function () {
-                      console.log("jieshu");
-                      bar.grand.refresh();
                       bar.indexgrand= (this.y/40)*(-1)+(rows-1)/2;//+1+initBar.grand
                   }});
            bar.grand.scrollToElement(document.querySelector("#grandwrapper li:nth-child("+initBar.grand+")"),null,null,true) ;                  
