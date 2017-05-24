@@ -97,7 +97,7 @@
         styleSuit:function(rows){
             $("#ui-Page").css("height",120+rows*40);
             $("#ui-scroll").css("height",rows*40);   
-             $("#ui-mark").css("top",50+rows*20);                    
+             $("#ui-mark").css("top",45+rows*20);                    
         },
         initCommon:function(option){
             var data = option.source;
