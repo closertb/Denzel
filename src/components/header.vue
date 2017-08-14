@@ -1,128 +1,66 @@
 <template>
-	<header class="ui-header">
-		<ul class="ui-login">
-			<section v-if="userInfo.name">
-         <p>欢迎你：{{userInfo.name}} <button class="loginout" @click="loginout"><img src="../assets/close.png"></button></p>
-      </section>
-     	<section v-if="!userInfo.name">
-         <router-link :to="{ path: 'Login' }">请先登录</router-link>
-      </section>
-		</ul>
-		<ul id="ui-nav">
-      <li v-for="(tabbarName,index) of tabbarNames" :class="{active:title== tabbarName.name}">
-          <router-link  :to="tabbarName.tabLink">{{tabbarName.name}}
-              </router-link>   
-      </li>   
-		</ul>      
-	</header>
+    <header class="flexheader">
+	    <button class="off-canvas-launcher toLeft" @click="showNav">Menu</button>
+        <span id="showInfo" class="toRight" :class="{isLogin:loginState}"><button id="loginEnable" @click="login">登录</button>
+        <label id="welInfo">欢迎你：<label id='showrName' v-text="userName"></label></label><i id="loginOut" @click="loginOut" class="fa fa-fw fa-user-times"></i>
+        </span>
+    </header>
 </template>
-
 <script>
-import {mapState} from 'vuex' 
+import {mapState,mapActions} from 'vuex'
 export default {
-      data(){
-        return{
-            tabbarNames:[
-                {name:'Hello',tabLink:'/'},
-              //  {name:'Log',tabLink:'/Login'},
-                {name:'MyBlog',tabLink:'/MyBlog'},
-                {name:'MyResume',tabLink:'/Resume'}
-            ],
-        }
-    },
-        methods:{
-          clickFun:function(selectName){
-          this.activeName = selectName;},
-         loginout:function(){
-          this.$store.dispatch("userSignout");
-          this.$router.replace({ path: '/Login' })
-      }          
-    },
-        computed: mapState({
-    userInfo:"userstate"  
+  computed:mapState({
+      loginState:state=>state.loginState,
+      onLogining:state=>state.onLogining,
+      userName:state=>state.userInfo.userName
   }),
-        props: {
-            title: {
-                type: String,
-                default: 'any'
-            }
-        }
+  methods:{
+      ...mapActions(
+         ['controlLogin','logOff']
+      ),
+      showNav:function(event) {
+			event.stopPropagation();
+			document.querySelector('aside.shadeLayer').classList.toggle('showItem');
+	  },
+      login:function(){
+          console.log('login');
+          this.controlLogin(!this.onLogining);
+      },
+      loginOut:function(){
+          
+          this.logOff();
+      }   
+  }
 }
 </script>
-
 <style scoped>
-*{color:white;}
-.ui-header{
-  position: fixed;
-  float:left;
-  width:100%;
-  min-height:44px;
-  border: outset 1px #ddd;
-  border-width: 0 0 1px;
-  background: #42474B;
-  z-index: 1030; 
+/*主页面头样式*/
+.flexheader{position: fixed;top:0; right:0;left:0;z-index:5;display:flex;align-items:center;justify-content:space-between; background: yellowgreen; padding:.3rem 0;}
+.toRight{margin-right:1.5rem;}
+.toLeft {margin-left:1.5rem;}
+/*修改按键的默认样式*/
+.off-canvas-launcher {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 1px solid #297D94;
+	border-radius: 4px;
+	background: none;
+	padding: 4px 8px;
+	position: relative;
 }
-.ui-header ul{
-  padding-top: 10px;
-  min-height:40px;
-  margin:2px 0;
-}
-.ui-login{
-  position:absolute;
-  float:right;
-  text-align:right;
-  min-width:25%;
-  right:0px;
-  padding-right:20px;
-}
-#ui-nav{
-  position:absolute;
-  float:left;
-  text-align:left;
-  min-width:49%;
-  left:0px;
-  padding-left:10px;
-  padding-top: 0;
-}
-#ui-nav > li {
-    position:relative;
-    float:left;
-    display: block;
-    list-style-type:none;
-    margin:0px 0;
-    padding:10px 20px 10px;
-    }
-#ui-nav > li > a {
-  margin-right: 2px;
-  padding:10px 15px;
-  line-height: 1.42857143;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  text-decoration:none ;
-}
-#ui-nav > li > a:hover {
-  border-color: #eee #eee #ddd;
-}
-#ui-nav > li.active > a,
-#ui-nav > li.active > a:hover,
-#ui-nav > li.active > a:focus {
-  cursor: default;
-  border: 1px solid #ddd;
-  border-bottom-color: transparent;
-    color: #fff;
-  background-color: #337ab7;
-}
-.loginout{
-  margin-left:10px;
-  background: #fff;
-  border:0;
-  }
-  .loginout img{width:18px;height:18px;}
-/*  .router-link-active{
-    cursor: default;
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-    color: #fff;
-    background-color: #337ab7;    
-  }*/
+
+#loginEnable {display: inline-block;border: 1px solid #4d90fe;padding:.2rem .5rem; border-radius: .2rem;color: white;background:#4d90fe;}
+#welInfo,#loginOut {display:none;}
+.isLogin #loginEnable {display: none;}
+.isLogin #welInfo {display: inline-block;}
+.isLogin #loginOut{display: inline-block;height:1.1rem;width:1.1rem;margin:.2rem 0 0 .3rem;}
+/*for larger screens set the nav to the left and give the main content extra margin to compensate for it*/
+@media (min-width: 700px) {
+    .off-canvas-launcher {
+		display: none;
+	}
+	header {position: relative;margin-left: 200px;}	
+/*	.loginshow{margin-left: 200px;}*/
+    .flexheader {justify-content: flex-end;}
+	}
 </style>

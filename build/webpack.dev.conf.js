@@ -16,8 +16,7 @@ module.exports = merge(baseWebpackConfig, {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
   },
   // cheap-module-eval-source-map is faster for development
-//  devtool: '#cheap-module-eval-source-map',
-  devtool:config.build.productionSourceMap ? '#source-map' : false,
+  devtool: '#cheap-module-eval-source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env
@@ -29,6 +28,7 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      favicon:  './src/assets/icon.png',
       inject: true
     }),
     new FriendlyErrorsPlugin()

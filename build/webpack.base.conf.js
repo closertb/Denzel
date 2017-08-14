@@ -2,7 +2,6 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-var webpack = require('webpack')/*新增内容*/
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -12,13 +11,6 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
-    plugins:[ /*新增内容*/
-  new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery",
-    "windows.jQuery": "jquery"
-  })    
-  ],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -30,10 +22,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-     'assets': path.resolve(__dirname, '../src/assets'),
-     'components': path.resolve(__dirname, '../src/components'),
-      jquery: "jquery/src/jquery"      
+      '@': resolve('src')
     }
   },
   module: {
@@ -53,7 +42,15 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: utils.assetsPath('img/[name].[ext]')
+        }
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('media/[name].[hash:7].[ext]')
         }
       },
       {
