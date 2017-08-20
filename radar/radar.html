@@ -1,0 +1,199 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Denzel Blog</title>
+    <meta name="keywords" content="vue学习，练手项目">
+ 	<meta name="viewport" content="width=device-width">
+	<meta name="theme-color" content="#ff9900">   
+<!--    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="max-age">  -->
+  <!--  <link href="css/common.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/ui.css" rel="stylesheet">
+    <link type="favicon" rel="shortcut icon" href ="img/icon.jpeg"/>
+    <style>
+        .container{
+            margin:2rem 1rem;
+            padding: .2rem;
+            width:60rem;
+            min-height: 1rem;
+            
+            /* z-index用来创建新的层叠上下文，这样子元素的z-index:-1不会超出容器 
+            具体可参见：http://www.zhangxinxu.com/wordpress/?p=5115
+            */
+            position: relative; z-index: 1;
+        }
+        #mian{position: relative;}
+        .show{position: absolute;border: 1px solid yellowgreen;z-index:999;background: grey;opacity: 0.5;}
+    </style>
+</head>
+<body>
+    <div class="container">这是一个很大的例子
+     <div id="main" >
+         <canvas id="canvas" width='600px' height='400px'></canvas>
+     </div>
+    </div>
+    <script src="js/component/radar.js"></script>
+    <script>
+        const chart= radar.init(document.getElementById('main'));
+      //  chart.setOption();
+        function drawLine(ctx,data){
+            ctx.beginPath();
+            ctx.strokeStyle = 'blue';
+            for(let i= 0;i<data.length;i++){
+                ctx.moveTo(0,0);
+                ctx.lineTo(data[i][0],data[i][1])
+            }
+            ctx.stroke();
+        }
+        //获取鼠标在canvas画布上的位置(**不是浏览器窗口的鼠标位置)
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left * (canvas.width / rect.width),
+                y: evt.clientY - rect.top * (canvas.height / rect.height)
+            }
+        }
+        function drawArc(ctx,radius,splitNum){
+            ctx.beginPath();
+            const splitStep =radius/splitNum;
+            for(let i=1;i<=splitNum;i++){
+                ctx.moveTo(i*splitStep,0);
+                ctx.arc(0,0,i*splitStep,0,2*PI,false);
+            }
+            ctx.stroke();
+        }
+        function drawHoverPint(ctx,x,y){
+            ctx.fillStyle='white'; //rgba(10,50,200,0.5)
+            ctx.arc(x,y,10,0,2*PI);
+            ctx.fill();
+        }
+        function drawRegion(ctx,data) {
+            const max = data.length;
+            ctx.strokeStyle = 'yellowgreen';
+            ctx.fillStyle='rgba(10,50,200,0.5)'; //rgba(10,50,200,0.5)
+            ctx.beginPath();
+            ctx.moveTo(...data[0]);
+            for(let i=0;i<max;i++){
+                ctx.lineTo(...data[i]);
+            }
+            ctx.lineTo(...data[0]);
+            ctx.fill()
+            ctx.stroke();
+        }
+        function drawPoint(ctx,data) {
+            const max = data.length;
+            const r= 3;
+            ctx.fillStyle='white'; //rgba(10,50,200,0.5)
+            ctx.beginPath();
+            for(let i=0;i<max;i++){
+                ctx.moveTo(data[i][0]+r,data[i][1]);
+                ctx.arc(...data[i],r,0,2*PI);
+                ctx.fill();
+            }
+            ctx.stroke();
+        }
+        function drawText(ctx,data) {
+            const max = data.length;
+            ctx.fillStyle ='green';
+            for(let i=0;i<max;i++){
+                let x= data[i].position[0],y= data[i].position[1];
+                if((x>=-1)&&(x<=1)){
+                    ctx.textAlign ='center';
+                }else if(x>1){
+                    ctx.textAlign ='left';
+                }else{
+                    ctx.textAlign ='right';
+                }
+                ctx.fillText(data[i].label,...data[i].position);
+            }
+        }
+        const draw = document.getElementById('canvas');
+        const m = Math;
+        const PI = m.PI;
+        const raduis = 150;
+        let l = 6;
+        let data = [120,50,150,80,100,140];
+        let label= ['卫22生','安333全','交555通','住66宿','景77点','吃88喝'];
+        let arcData =[],pointData=[],labelData=[];
+        const single = 2*PI /l ;
+        for(let i = 0;i<l;i++){
+            arcData.push([raduis*m.sin(i*single),raduis*m.cos(i*single)]);
+            labelData.push([(raduis+16)*m.sin(i*single),(raduis+16)*m.cos(i*single)]);
+        }
+        for(let i = 0;i<l;i++){
+            let ratio = data[i]/raduis;
+            pointData.push([arcData[i][0]*ratio,arcData[i][1]*ratio]);
+            label[i] = {
+                label:label[i],
+                position:labelData[i]
+            }
+        }
+        const offset = {
+            x:draw.offsetWidth,
+            y:draw.offsetHeight
+        };
+        console.log(offset);
+        const ctx = draw.getContext("2d");  
+         ctx.strokeStyle ='red';
+
+        ctx.translate(offset.x/2,offset.y/2);
+
+        drawArc(ctx,raduis,3);
+        drawLine(ctx,arcData);
+        drawRegion(ctx,pointData);
+        drawPoint(ctx,pointData);
+        drawText(ctx,label);
+        function hoverLabel(point){
+            let label =document.createElement('label');
+            label.classList.add('show');
+            label.innerHTML ='show:0999'
+            label.style.top =point.y ;
+            label.style.left =point.x ;
+            document.querySelector('#main').appendChild(label);
+        }
+        function removeLabel() {
+            const main = document.getElementById('main');
+            if(main.querySelectorAll('label.show').length){
+                main.removeChild(main.querySelector('label.show'));
+            }
+        }
+        draw.addEventListener('mousemove',function (evt) {
+            var mouse = getMousePos(draw, evt);
+            let point={};
+            let index =-1;
+            const r =5;
+            point.x=mouse.x-offset.x/2;
+            point.y=mouse.y-offset.y/2;
+                for(let i=0;i<pointData.length;i++) {
+                    let item = pointData[i];
+                    if (point.x > (item[0] - r) && point.x < (item[0] + r) && point.y > (item[1] - r) && point.y < (item[1] + r)) {
+                        index = i;
+                        break;
+                    }
+                }
+                if(index!==-1){
+                    hoverLabel(mouse);
+                }else{
+                    removeLabel();
+                }
+        })
+        function autoLabel(point){
+            removeLabel();
+            let label =document.createElement('label');
+            label.classList.add('show');
+            label.innerHTML ='show:0999'
+            label.style.top =point[1]+offset.y/2 ;
+            label.style.left =point[0]+offset.x/2 ;
+            document.querySelector('#main').appendChild(label);
+        }
+        let step =-1;
+        setInterval(function(){
+            step = (step+1)%6;
+            autoLabel(pointData[step]);
+            console.log(step);
+        },1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Denzel Blog</title>
+    <meta name="keywords" content="vue学习，练手项目">
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#ff9900">
+    <!--    <meta http-equiv="expires" content="0">
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="max-age">  -->
+    <!--  <link href="css/common.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/ui.css" rel="stylesheet">
+    <link type="favicon" rel="shortcut icon" href ="img/icon.jpeg"/>
+    <style>
+        .container{
+            margin:2rem 1rem;
+            padding: .2rem;
+            width:60rem;
+            min-height: 1rem;
+
+            /* z-index用来创建新的层叠上下文，这样子元素的z-index:-1不会超出容器
+            具体可参见：http://www.zhangxinxu.com/wordpress/?p=5115
+            */
+            position: relative; z-index: 1;
+        }
+        #main{position: relative;width:600px;height:400px;border: 2px solid yellowgreen;}
+        canvas{margin:0;padding:0;border:0;}
+        .show{position: absolute;border: 1px solid yellowgreen;z-index:999;background: grey;opacity: 0.5;}
+    </style>
+</head>
+<body>
+<div class="container">这是一个很大的例子
+    <div id="main" >
+    </div>
+</div>
+<script src="js/component/radar.js"></script>
+<script>
+    const chart= radar.init(document.getElementById('main'));
+    console.log(chart);
+    chart.setOption({
+        axis:{
+            style:{
+                outRange:10,
+                color:'red',
+                width:2
+            }
+        },
+        label:{
+            value:[{label:'标签1',max:100},{label:'标签2',max:100},{label:'标签3',max:100},{label:'标签4',max:100},{label:'标签5'},{label:'标签6',max:100}],
+        },
+        radius:'150',
+        data:{
+            value:[60,80,90,70,99,50],
+            style:{
+                borderColor:'rgba(179,107,18,0.5)',
+                fillColor:'rgba(28,124,115,0.3)',
+                borderWidth:'2'
+            }
+        }
+    });
+</script>
+</body>
+</html>
