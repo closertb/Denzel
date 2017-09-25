@@ -23,13 +23,12 @@ export default {
 			document.querySelector('aside.shadeLayer').classList.toggle('showItem');
 	  },
       login:function(){
-          console.log('login');
           this.controlLogin(!this.onLogining);
       },
       loginOut:function(){
-          
+
           this.logOff();
-      }   
+      }
   }
 }
 </script>
@@ -59,7 +58,7 @@ export default {
     .off-canvas-launcher {
 		display: none;
 	}
-	header {position: relative;margin-left: 200px;}	
+	header {position: relative;margin-left: 200px;}
 /*	.loginshow{margin-left: 200px;}*/
     .flexheader {justify-content: flex-end;}
 	}

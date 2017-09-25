@@ -6,14 +6,16 @@ import router from './router';
 import store from './state';
 import login from '@/components/Login'
 import navlist from '@/components/NavList';
-import header from '@/components/Header'; 
-import './js/lib/fetch.js'; 
+import header from '@/components/Header';
+import MetaInfo from 'vue-meta-info'
+import './js/lib/fetch.js';
 
 
 Vue.config.productionTip = false;
 Vue.component('login-form',login);
 Vue.component('page-nav',navlist);
 Vue.component('page-header',header);
+Vue.use(MetaInfo);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -22,4 +24,4 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-   
+

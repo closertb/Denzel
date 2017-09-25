@@ -13,6 +13,7 @@
     "fetch-polyfill": "^0.8.2",
     "marked": "^0.3.6",
     "vue": "^2.3.3",
+    "vue-meta-info": "^0.1.0",
     "vue-router": "^2.6.0",
     "vuex": "^2.3.1"
   },
